@@ -16,11 +16,11 @@
 
 #import "GoogleDataTransport/GDTCCTLibrary/Private/GDTCCTUploader.h"
 
-#import "GoogleDataTransport/GDTCORLibrary/Internal/GDTCORPlatform.h"
-#import "GoogleDataTransport/GDTCORLibrary/Internal/GDTCORRegistrar.h"
-#import "GoogleDataTransport/GDTCORLibrary/Internal/GDTCORStorageProtocol.h"
 #import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORConsoleLogger.h"
 #import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORPlatform.h"
+#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORRegistrar.h"
+#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORStorageProtocol.h"
 
 #import <nanopb/pb.h>
 #import <nanopb/pb_decode.h>
@@ -80,9 +80,6 @@ typedef void (^GDTCCTUploaderEventBatchBlock)(NSNumber *_Nullable batchID,
 
 @implementation GDTCCTUploader
 
-@synthesize uploaderSession = _uploaderSession;
-static NSURL *_testServerURL = nil;
-
 + (void)load {
   GDTCCTUploader *uploader = [GDTCCTUploader sharedInstance];
   [[GDTCORRegistrar sharedInstance] registerUploader:uploader target:kGDTCORTargetCCT];
@@ -100,15 +97,22 @@ static NSURL *_testServerURL = nil;
   return sharedInstance;
 }
 
-+ (void)setTestServerURL:(NSURL *_Nullable)serverURL {
-  _testServerURL = serverURL;
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    _uploaderQueue = dispatch_queue_create("com.google.GDTCCTUploader", DISPATCH_QUEUE_SERIAL);
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    _uploaderSession = [NSURLSession sessionWithConfiguration:config
+                                                     delegate:self
+                                                delegateQueue:nil];
+  }
+  return self;
 }
 
-+ (NSURL *_Nullable)testServerURL {
-  return _testServerURL;
-}
-
-+ (NSDictionary<NSNumber *, NSURL *> *)uploadURLs {
+/**
+ *
+ */
+- (nullable NSURL *)serverURLForTarget:(GDTCORTarget)target {
   // These strings should be interleaved to construct the real URL. This is just to (hopefully)
   // fool github URL scanning bots.
   static NSURL *CCTServerURL;
@@ -158,46 +162,31 @@ static NSURL *_testServerURL = nil;
                           p2[31], p1[32], p2[32], p1[33], p2[33], p1[34], p2[34], p1[35], '\0'};
     CSHServerURL = [NSURL URLWithString:[NSString stringWithUTF8String:URL]];
   });
-  static NSDictionary<NSNumber *, NSURL *> *uploadURLs;
-  static dispatch_once_t URLOnceToken;
-  dispatch_once(&URLOnceToken, ^{
-    uploadURLs = @{
-      @(kGDTCORTargetCCT) : CCTServerURL,
-      @(kGDTCORTargetFLL) : FLLServerURL,
-      @(kGDTCORTargetCSH) : CSHServerURL,
-      @(kGDTCORTargetINT) : [NSURL URLWithString:kINTServerURL]
-    };
-  });
-  return uploadURLs;
-}
 
-+ (nullable NSURL *)serverURLForTarget:(GDTCORTarget)target {
 #if !NDEBUG
   if (_testServerURL) {
     return _testServerURL;
   }
 #endif  // !NDEBUG
 
-  NSDictionary<NSNumber *, NSURL *> *uploadURLs = [self uploadURLs];
-  return uploadURLs[@(target)];
-}
+  switch (target) {
+    case kGDTCORTargetCCT:
+      return CCTServerURL;
 
-- (instancetype)init {
-  self = [super init];
-  if (self) {
-    _uploaderQueue = dispatch_queue_create("com.google.GDTCCTUploader", DISPATCH_QUEUE_SERIAL);
-  }
-  return self;
-}
+    case kGDTCORTargetFLL:
+      return FLLServerURL;
 
-- (NSURLSession *)uploaderSession {
-  if (_uploaderSession == nil) {
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-    _uploaderSession = [NSURLSession sessionWithConfiguration:config
-                                                     delegate:self
-                                                delegateQueue:nil];
+    case kGDTCORTargetCSH:
+      return CSHServerURL;
+
+    case kGDTCORTargetINT:
+      return [NSURL URLWithString:kINTServerURL];
+
+    default:
+      GDTCORLogDebug(@"GDTCCTUploader doesn't support target %ld", (long)target);
+      return nil;
+      break;
   }
-  return _uploaderSession;
 }
 
 - (NSString *)FLLAndCSHandINTAPIKey {
@@ -600,7 +589,7 @@ static NSURL *_testServerURL = nil;
     GDTCORLogDebug(@"There was no data to construct a request for target %ld.", (long)target);
     return nil;
   }
-  NSURL *URL = [[self class] serverURLForTarget:target];
+  NSURL *URL = [self serverURLForTarget:target];
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
   NSString *targetString;
   switch (target) {
@@ -712,7 +701,7 @@ static NSURL *_testServerURL = nil;
     return;
   }
   if (response.statusCode == 302 || response.statusCode == 301) {
-    if ([request.URL isEqual:[[self class] serverURLForTarget:kGDTCORTargetFLL]]) {
+    if ([request.URL isEqual:[self serverURLForTarget:kGDTCORTargetFLL]]) {
       NSURLRequest *newRequest = [self constructRequestForTarget:kGDTCORTargetCCT
                                                             data:task.originalRequest.HTTPBody];
       completionHandler(newRequest);

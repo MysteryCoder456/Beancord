@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var guildRepo = GuildRepository()
+    
+    init() {
+        print(guildRepo.guilds)
+    }
+    
     var body: some View {
         Text("Hello, world!")
             .padding()
