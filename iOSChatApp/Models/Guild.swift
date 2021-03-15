@@ -10,7 +10,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct Guild: Identifiable, Codable {
-    @DocumentID var id = UUID().uuidString
+    @DocumentID var id: String?
     var name: String
-    var messages: Array<Message>
 }

@@ -7,21 +7,16 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct GuildListView: View {
     @ObservedObject var guildRepo = GuildRepository()
     
-    init() {
-        print(guildRepo.guilds)
-    }
-    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Text("yeet")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct GuildListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        GuildListView()
     }
 }

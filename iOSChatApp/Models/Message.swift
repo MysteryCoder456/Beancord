@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct Message: Identifiable, Codable {
-    @DocumentID var id = UUID().uuidString
+    @DocumentID var id: String?
     var authorID: String
     var guildID: String
     var content: String

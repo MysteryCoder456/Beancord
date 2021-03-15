@@ -10,16 +10,18 @@
 		0A62568B23ACF79E4EA6D410 /* Pods_iOSChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D32435B6CF41138EBC65A4B /* Pods_iOSChatApp.framework */; };
 		2398E5D25C48FB2191BFEF65 /* Pods_iOSChatAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B891DFA6853B02F1170C3E34 /* Pods_iOSChatAppTests.framework */; };
 		341855C625FC8CDA0085EDDB /* iOSChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341855C525FC8CDA0085EDDB /* iOSChatAppApp.swift */; };
-		341855C825FC8CDA0085EDDB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341855C725FC8CDA0085EDDB /* ContentView.swift */; };
+		341855C825FC8CDA0085EDDB /* GuildListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341855C725FC8CDA0085EDDB /* GuildListView.swift */; };
 		341855CA25FC8CDC0085EDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341855C925FC8CDC0085EDDB /* Assets.xcassets */; };
 		341855CD25FC8CDC0085EDDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341855CC25FC8CDC0085EDDB /* Preview Assets.xcassets */; };
 		341855D825FC8CDD0085EDDB /* iOSChatAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341855D725FC8CDD0085EDDB /* iOSChatAppTests.swift */; };
 		341855E325FC8CDD0085EDDB /* iOSChatAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341855E225FC8CDD0085EDDB /* iOSChatAppUITests.swift */; };
+		34A06F012600110D003B5A49 /* MessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A06F002600110D003B5A49 /* MessageRepository.swift */; };
+		34CA84C72600194F007180C2 /* GuildRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84C62600194E007180C2 /* GuildRowView.swift */; };
+		34CA84C82600194F007180C2 /* GuildRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84C62600194E007180C2 /* GuildRowView.swift */; };
 		34F58A1525FC99A1004D5970 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34F58A1425FC99A1004D5970 /* GoogleService-Info.plist */; };
 		34F58A1B25FC9D6C004D5970 /* GuildRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58A1A25FC9D6C004D5970 /* GuildRepository.swift */; };
 		34F58A2225FC9DB9004D5970 /* Guild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58A2125FC9DB9004D5970 /* Guild.swift */; };
 		34F58A2A25FC9F70004D5970 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58A2925FC9F70004D5970 /* Message.swift */; };
-		34F58A5125FCAAE7004D5970 /* MessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58A5025FCAAE7004D5970 /* MessageRepository.swift */; };
 		79E9C27CBD5E481655D2E5DD /* Pods_iOSChatApp_iOSChatAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026B908E15225CEE12F32C82 /* Pods_iOSChatApp_iOSChatAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +48,7 @@
 		16D61236403C0F8FD5592F08 /* Pods-iOSChatAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSChatAppTests.release.xcconfig"; path = "Target Support Files/Pods-iOSChatAppTests/Pods-iOSChatAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		341855C225FC8CDA0085EDDB /* iOSChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		341855C525FC8CDA0085EDDB /* iOSChatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSChatAppApp.swift; sourceTree = "<group>"; };
-		341855C725FC8CDA0085EDDB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		341855C725FC8CDA0085EDDB /* GuildListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildListView.swift; sourceTree = "<group>"; };
 		341855C925FC8CDC0085EDDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		341855CC25FC8CDC0085EDDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		341855CE25FC8CDC0085EDDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,11 +58,12 @@
 		341855DE25FC8CDD0085EDDB /* iOSChatAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSChatAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		341855E225FC8CDD0085EDDB /* iOSChatAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSChatAppUITests.swift; sourceTree = "<group>"; };
 		341855E425FC8CDD0085EDDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34A06F002600110D003B5A49 /* MessageRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
+		34CA84C62600194E007180C2 /* GuildRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildRowView.swift; sourceTree = "<group>"; };
 		34F58A1425FC99A1004D5970 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		34F58A1A25FC9D6C004D5970 /* GuildRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildRepository.swift; sourceTree = "<group>"; };
 		34F58A2125FC9DB9004D5970 /* Guild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guild.swift; sourceTree = "<group>"; };
 		34F58A2925FC9F70004D5970 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		34F58A5025FCAAE7004D5970 /* MessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
 		5A48CA1DA609AE224D1376B8 /* Pods-iOSChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSChatApp.release.xcconfig"; path = "Target Support Files/Pods-iOSChatApp/Pods-iOSChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		71097116AF3DAD0825BFD739 /* Pods-iOSChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSChatApp.debug.xcconfig"; path = "Target Support Files/Pods-iOSChatApp/Pods-iOSChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8D32435B6CF41138EBC65A4B /* Pods_iOSChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				341855C525FC8CDA0085EDDB /* iOSChatAppApp.swift */,
-				341855C725FC8CDA0085EDDB /* ContentView.swift */,
+				341855C725FC8CDA0085EDDB /* GuildListView.swift */,
+				34CA84C52600191F007180C2 /* RowViews */,
 				34F58A1F25FC9D9E004D5970 /* Models */,
 				34F58A1925FC9D3E004D5970 /* Repositories */,
 				341855C925FC8CDC0085EDDB /* Assets.xcassets */,
@@ -160,11 +164,19 @@
 			path = iOSChatAppUITests;
 			sourceTree = "<group>";
 		};
+		34CA84C52600191F007180C2 /* RowViews */ = {
+			isa = PBXGroup;
+			children = (
+				34CA84C62600194E007180C2 /* GuildRowView.swift */,
+			);
+			path = RowViews;
+			sourceTree = "<group>";
+		};
 		34F58A1925FC9D3E004D5970 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				34A06F002600110D003B5A49 /* MessageRepository.swift */,
 				34F58A1A25FC9D6C004D5970 /* GuildRepository.swift */,
-				34F58A5025FCAAE7004D5970 /* MessageRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -440,11 +452,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				34F58A1B25FC9D6C004D5970 /* GuildRepository.swift in Sources */,
-				341855C825FC8CDA0085EDDB /* ContentView.swift in Sources */,
+				341855C825FC8CDA0085EDDB /* GuildListView.swift in Sources */,
 				34F58A2A25FC9F70004D5970 /* Message.swift in Sources */,
+				34CA84C72600194F007180C2 /* GuildRowView.swift in Sources */,
 				341855C625FC8CDA0085EDDB /* iOSChatAppApp.swift in Sources */,
 				34F58A2225FC9DB9004D5970 /* Guild.swift in Sources */,
-				34F58A5125FCAAE7004D5970 /* MessageRepository.swift in Sources */,
+				34A06F012600110D003B5A49 /* MessageRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				341855E325FC8CDD0085EDDB /* iOSChatAppUITests.swift in Sources */,
+				34CA84C82600194F007180C2 /* GuildRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
