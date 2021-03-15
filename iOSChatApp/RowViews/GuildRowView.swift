@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct GuildRowView: View {
+    var guild: Guild
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Image(systemName: "person.3.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 70, height: 70, alignment: .center)
+                .clipShape(Circle())
+
+            Text(guild.name)
+                .font(.title)
+            
+            Spacer()
+        }
+        .padding()
     }
 }
 
 struct GuildRowView_Previews: PreviewProvider {
     static var previews: some View {
-        GuildRowView()
+        GuildRowView(guild: previewGuild)
+            .previewLayout(.fixed(width: 350, height: 100))
     }
 }
