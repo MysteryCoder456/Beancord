@@ -18,6 +18,8 @@
 		34A06F012600110D003B5A49 /* MessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A06F002600110D003B5A49 /* MessageRepository.swift */; };
 		34CA84C72600194F007180C2 /* GuildRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84C62600194E007180C2 /* GuildRowView.swift */; };
 		34CA84C82600194F007180C2 /* GuildRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84C62600194E007180C2 /* GuildRowView.swift */; };
+		34CA84D926007F1C007180C2 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84D826007F1C007180C2 /* MessagesView.swift */; };
+		34CA84DA26007F1C007180C2 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84D826007F1C007180C2 /* MessagesView.swift */; };
 		34F58A1525FC99A1004D5970 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34F58A1425FC99A1004D5970 /* GoogleService-Info.plist */; };
 		34F58A1B25FC9D6C004D5970 /* GuildRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58A1A25FC9D6C004D5970 /* GuildRepository.swift */; };
 		34F58A2225FC9DB9004D5970 /* Guild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F58A2125FC9DB9004D5970 /* Guild.swift */; };
@@ -60,6 +62,7 @@
 		341855E425FC8CDD0085EDDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34A06F002600110D003B5A49 /* MessageRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
 		34CA84C62600194E007180C2 /* GuildRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildRowView.swift; sourceTree = "<group>"; };
+		34CA84D826007F1C007180C2 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		34F58A1425FC99A1004D5970 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		34F58A1A25FC9D6C004D5970 /* GuildRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildRepository.swift; sourceTree = "<group>"; };
 		34F58A2125FC9DB9004D5970 /* Guild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guild.swift; sourceTree = "<group>"; };
@@ -127,6 +130,7 @@
 			children = (
 				341855C525FC8CDA0085EDDB /* iOSChatAppApp.swift */,
 				341855C725FC8CDA0085EDDB /* GuildListView.swift */,
+				34CA84D826007F1C007180C2 /* MessagesView.swift */,
 				34CA84C52600191F007180C2 /* RowViews */,
 				34F58A1F25FC9D9E004D5970 /* Models */,
 				34F58A1925FC9D3E004D5970 /* Repositories */,
@@ -451,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34CA84D926007F1C007180C2 /* MessagesView.swift in Sources */,
 				34F58A1B25FC9D6C004D5970 /* GuildRepository.swift in Sources */,
 				341855C825FC8CDA0085EDDB /* GuildListView.swift in Sources */,
 				34F58A2A25FC9F70004D5970 /* Message.swift in Sources */,
@@ -475,6 +480,7 @@
 			files = (
 				341855E325FC8CDD0085EDDB /* iOSChatAppUITests.swift in Sources */,
 				34CA84C82600194F007180C2 /* GuildRowView.swift in Sources */,
+				34CA84DA26007F1C007180C2 /* MessagesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
