@@ -17,6 +17,7 @@
 		34C5E36026010CCA001C2E6A /* EmailRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E35F26010CCA001C2E6A /* EmailRegisterView.swift */; };
 		34C5E36326010EE8001C2E6A /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E36226010EE8001C2E6A /* UserRepository.swift */; };
 		34C5E36626011036001C2E6A /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E36526011036001C2E6A /* AppUser.swift */; };
+		34C5E36A260139B4001C2E6A /* OtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E369260139B4001C2E6A /* OtherView.swift */; };
 		34CA84C72600194F007180C2 /* GuildRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84C62600194E007180C2 /* GuildRowView.swift */; };
 		34CA84D926007F1C007180C2 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84D826007F1C007180C2 /* MessagesView.swift */; };
 		34CA84E326008E63007180C2 /* EmailSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84E226008E63007180C2 /* EmailSignInView.swift */; };
@@ -42,6 +43,7 @@
 		34C5E35F26010CCA001C2E6A /* EmailRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegisterView.swift; sourceTree = "<group>"; };
 		34C5E36226010EE8001C2E6A /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		34C5E36526011036001C2E6A /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		34C5E369260139B4001C2E6A /* OtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherView.swift; sourceTree = "<group>"; };
 		34CA84C62600194E007180C2 /* GuildRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildRowView.swift; sourceTree = "<group>"; };
 		34CA84D826007F1C007180C2 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		34CA84E226008E63007180C2 /* EmailSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				341855C725FC8CDA0085EDDB /* GuildListView.swift */,
+				34C5E369260139B4001C2E6A /* OtherView.swift */,
 			);
 			path = TabViews;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				34CA84EB260090E9007180C2 /* AppView.swift in Sources */,
 				34A06F012600110D003B5A49 /* MessageRepository.swift in Sources */,
 				3402AE472600BDB00085B26B /* ChatBubble.swift in Sources */,
+				34C5E36A260139B4001C2E6A /* OtherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

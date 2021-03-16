@@ -18,6 +18,12 @@ struct AppView: View {
                         Image(systemName: "bubble.left.fill")
                         Text("Guilds")
                     }
+                
+                OtherView()
+                    .tabItem {
+                        Image(systemName: "tray.2.fill")
+                        Text("Other")
+                    }
             }
         } else {
             EmailSignInView()
