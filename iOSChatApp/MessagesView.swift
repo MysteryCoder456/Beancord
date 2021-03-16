@@ -11,6 +11,7 @@ import FirebaseAuth
 struct MessagesView: View {
     var guild: Guild
     @ObservedObject var msgRepo: MessageRepository
+    @ObservedObject var userRepo = UserRepository()
     @State var message: String = ""
     
     init(guild: Guild) {
@@ -24,6 +25,7 @@ struct MessagesView: View {
             
             List(messages) { message in
                 let msg: Message = message
+                let author = userRepo.users.first(where: { $0.userID == msg.authorID })
                 let isMyMsg = msg.authorID == Auth.auth().currentUser?.uid
                 
                 HStack {
@@ -35,10 +37,12 @@ struct MessagesView: View {
                             .foregroundColor(.white)
                             .background(Color.blue)
                             .clipShape(ChatBubble(sentByMe: isMyMsg))
+                            .frame(maxWidth: .infinity, alignment: isMyMsg ? .trailing : .leading)
                         
-                        Text("Username")
+                        Text(author?.username ?? "Unknown")
                             .font(.footnote)
                             .foregroundColor(.secondary)
+                            .frame(maxWidth: .infinity, alignment: isMyMsg ? .trailing : .leading)
                     }
                     
                     if !isMyMsg { Spacer() }

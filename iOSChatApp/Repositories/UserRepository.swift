@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-class UserRepository {
+class UserRepository: ObservableObject {
     let db = Firestore.firestore()
 
     @Published var users: Array<AppUser> = []
