@@ -27,21 +27,24 @@ struct MessagesView: View {
                 let isMyMsg = msg.authorID == Auth.auth().currentUser?.uid
                 
                 HStack {
-                    if isMyMsg {
-                        Spacer()
+                    if isMyMsg { Spacer() }
+                
+                    VStack {
+                        Text(msg.content)
+                            .padding()
+                            .foregroundColor(.white)
+                            .background(Color.blue)
+                            .clipShape(ChatBubble(sentByMe: isMyMsg))
+                        
+                        Text("Username")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
                     }
                     
-                    Text(msg.content)
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color.blue)
-                        .clipShape(ChatBubble(sentByMe: isMyMsg))
-                    
-                    if !isMyMsg {
-                        Spacer()
-                    }
+                    if !isMyMsg { Spacer() }
                 }
             }
+            .navigationTitle(guild.name)
             
             HStack {
                 TextField("Message", text: $message)
