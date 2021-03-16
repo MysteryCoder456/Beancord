@@ -15,4 +15,5 @@ struct Message: Identifiable, Codable {
     var authorID: String
     var guildID: String
     var content: String
+    var dateSent = Date()
 }
