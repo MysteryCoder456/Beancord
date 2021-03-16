@@ -11,14 +11,6 @@ target 'iOSChatApp' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   #pod 'Firebase/Storage'
-
-  target 'iOSChatAppTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'iOSChatAppUITests' do
-    # Pods for testing
-  end
+  pod 'MessageKit'
 
 end
