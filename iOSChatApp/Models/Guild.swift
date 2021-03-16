@@ -15,3 +15,9 @@ struct Guild: Identifiable, Codable {
 }
 
 var previewGuild = Guild(id: UUID().uuidString, name: "Guild Name")
+var previewGuildList = [
+    Guild(id: UUID().uuidString, name: "Guild 1"),
+    Guild(id: UUID().uuidString, name: "Guild 2"),
+    Guild(id: UUID().uuidString, name: "Guild 3"),
+    Guild(id: UUID().uuidString, name: "Guild 4")
+]
