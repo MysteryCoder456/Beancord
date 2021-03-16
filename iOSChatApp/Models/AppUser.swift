@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 
 struct AppUser: Identifiable, Codable {
     @DocumentID var id: String?
+    var userID: String
     var username: String
     var dateJoined = Date()
 }

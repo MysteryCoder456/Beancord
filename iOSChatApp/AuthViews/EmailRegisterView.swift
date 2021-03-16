@@ -79,7 +79,7 @@ struct EmailRegisterView: View {
                 print(error)
             } else {
                 let userRepo = UserRepository()
-                let newUser = AppUser(id: result?.user.uid, username: self.username)
+                let newUser = AppUser(id: UUID().uuidString, userID: result!.user.uid, username: self.username)
                 
                 userRepo.createUser(user: newUser)
                 
