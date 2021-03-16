@@ -17,6 +17,9 @@ struct GuildRowView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 70, height: 70, alignment: .center)
                 .clipShape(Circle())
+                .shadow(radius: 10)
+            
+            Spacer()
 
             Text(guild.name)
                 .font(.title)
