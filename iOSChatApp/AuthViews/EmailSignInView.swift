@@ -23,21 +23,29 @@ struct EmailSignInView: View {
             
             Spacer()
             
-            VStack(alignment: .center) {
-                Text("Enter your Email:")
-                TextField("Email Address", text: $email)
+            HStack(alignment: .center) {
+                Text("Email:")
+                TextField("you@example.com", text: $email)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
-                    .multilineTextAlignment(.center)
             }
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.gray)
+            )
             
-            VStack(alignment: .center) {
-                Text("Enter your Password:")
-                SecureField("Password", text: $password)
+            HStack(alignment: .center) {
+                Text("Password:")
+                SecureField("p@ssw0rd", text: $password)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
-                    .multilineTextAlignment(.center)
             }
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.gray)
+            )
             
             Spacer()
 
@@ -45,8 +53,6 @@ struct EmailSignInView: View {
                 Text("Login")
                     .font(.title)
             }
-            
-            Spacer()
         }
         .padding(.horizontal)
     }
