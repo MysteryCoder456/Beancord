@@ -25,14 +25,20 @@ struct MessagesView: View {
             HStack {
                 TextField("Message", text: $message)
                     .padding(.vertical)
+                    .padding(.leading, 10)
                 
                 Button(action: sendMessage) {
                     Image(systemName: "arrowshape.turn.up.right.fill")
                         .resizable()
                         .frame(width: 30, height: 30)
                 }
+                .padding(.trailing, 10)
             }
-            .padding(.horizontal)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.gray)
+            )
+            .padding(.horizontal, 5)
         }
     }
     

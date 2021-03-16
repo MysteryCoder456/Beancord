@@ -325,12 +325,7 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.5.0)
-  - InputBarAccessoryView (5.3.0):
-    - InputBarAccessoryView/Core (= 5.3.0)
-  - InputBarAccessoryView/Core (5.3.0)
   - leveldb-library (1.22)
-  - MessageKit (3.5.1):
-    - InputBarAccessoryView (~> 5.3.0)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -343,7 +338,6 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - FirebaseFirestoreSwift
-  - MessageKit
 
 SPEC REPOS:
   trunk:
@@ -363,9 +357,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
-    - InputBarAccessoryView
     - leveldb-library
-    - MessageKit
     - nanopb
     - PromisesObjC
 
@@ -386,12 +378,10 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
-  InputBarAccessoryView: 1638fc3336698eaead9cd83ff2da6c6218fcb6bc
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
-  MessageKit: 6a15a240a9a4767279de542a8fae861e83d8aedc
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: 6fd0599dd2520578fea13e6f9b95dcd897423787
+PODFILE CHECKSUM: eb679ea634cf76e148be04171accae93120b50b9
 
 COCOAPODS: 1.10.0

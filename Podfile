@@ -11,6 +11,5 @@ target 'iOSChatApp' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   #pod 'Firebase/Storage'
-  pod 'MessageKit'
 
 end

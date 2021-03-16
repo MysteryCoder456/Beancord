@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A62568B23ACF79E4EA6D410 /* Pods_iOSChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D32435B6CF41138EBC65A4B /* Pods_iOSChatApp.framework */; };
+		3402AE472600BDB00085B26B /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3402AE462600BDB00085B26B /* ChatBubble.swift */; };
 		341855C625FC8CDA0085EDDB /* iOSChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341855C525FC8CDA0085EDDB /* iOSChatAppApp.swift */; };
 		341855C825FC8CDA0085EDDB /* GuildListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341855C725FC8CDA0085EDDB /* GuildListView.swift */; };
 		341855CA25FC8CDC0085EDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341855C925FC8CDC0085EDDB /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		026B908E15225CEE12F32C82 /* Pods_iOSChatApp_iOSChatAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSChatApp_iOSChatAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		083C797266CA3EDC43D562FE /* Pods-iOSChatApp-iOSChatAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSChatApp-iOSChatAppUITests.release.xcconfig"; path = "Target Support Files/Pods-iOSChatApp-iOSChatAppUITests/Pods-iOSChatApp-iOSChatAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		16D61236403C0F8FD5592F08 /* Pods-iOSChatAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSChatAppTests.release.xcconfig"; path = "Target Support Files/Pods-iOSChatAppTests/Pods-iOSChatAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		3402AE462600BDB00085B26B /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 		341855C225FC8CDA0085EDDB /* iOSChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		341855C525FC8CDA0085EDDB /* iOSChatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSChatAppApp.swift; sourceTree = "<group>"; };
 		341855C725FC8CDA0085EDDB /* GuildListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildListView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3402AE4A2600BF800085B26B /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				3402AE462600BDB00085B26B /* ChatBubble.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
 		341855B925FC8CDA0085EDDB = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 				34CA84D826007F1C007180C2 /* MessagesView.swift */,
 				34CA84C52600191F007180C2 /* RowViews */,
 				34CA84E126008E3A007180C2 /* AuthViews */,
+				3402AE4A2600BF800085B26B /* Shapes */,
 				34F58A1F25FC9D9E004D5970 /* Models */,
 				34F58A1925FC9D3E004D5970 /* Repositories */,
 				341855C925FC8CDC0085EDDB /* Assets.xcassets */,
@@ -288,6 +299,7 @@
 				34F58A2225FC9DB9004D5970 /* Guild.swift in Sources */,
 				34CA84EB260090E9007180C2 /* AppView.swift in Sources */,
 				34A06F012600110D003B5A49 /* MessageRepository.swift in Sources */,
+				3402AE472600BDB00085B26B /* ChatBubble.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
