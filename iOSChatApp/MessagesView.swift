@@ -65,6 +65,10 @@ struct MessagesView: View {
     }
     
     func sendMessage() {
+        message = message.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if message == "" { return }
+        
         print("Sending message: \(message)")
         
         let currentUser = Auth.auth().currentUser
