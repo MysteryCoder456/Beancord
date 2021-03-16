@@ -14,6 +14,9 @@
 		341855CA25FC8CDC0085EDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341855C925FC8CDC0085EDDB /* Assets.xcassets */; };
 		341855CD25FC8CDC0085EDDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341855CC25FC8CDC0085EDDB /* Preview Assets.xcassets */; };
 		34A06F012600110D003B5A49 /* MessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A06F002600110D003B5A49 /* MessageRepository.swift */; };
+		34C5E36026010CCA001C2E6A /* EmailRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E35F26010CCA001C2E6A /* EmailRegisterView.swift */; };
+		34C5E36326010EE8001C2E6A /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E36226010EE8001C2E6A /* UserRepository.swift */; };
+		34C5E36626011036001C2E6A /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E36526011036001C2E6A /* AppUser.swift */; };
 		34CA84C72600194F007180C2 /* GuildRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84C62600194E007180C2 /* GuildRowView.swift */; };
 		34CA84D926007F1C007180C2 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84D826007F1C007180C2 /* MessagesView.swift */; };
 		34CA84E326008E63007180C2 /* EmailSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA84E226008E63007180C2 /* EmailSignInView.swift */; };
@@ -36,6 +39,9 @@
 		341855CC25FC8CDC0085EDDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		341855CE25FC8CDC0085EDDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34A06F002600110D003B5A49 /* MessageRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
+		34C5E35F26010CCA001C2E6A /* EmailRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegisterView.swift; sourceTree = "<group>"; };
+		34C5E36226010EE8001C2E6A /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		34C5E36526011036001C2E6A /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		34CA84C62600194E007180C2 /* GuildRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildRowView.swift; sourceTree = "<group>"; };
 		34CA84D826007F1C007180C2 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		34CA84E226008E63007180C2 /* EmailSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInView.swift; sourceTree = "<group>"; };
@@ -95,8 +101,8 @@
 			children = (
 				341855C525FC8CDA0085EDDB /* iOSChatAppApp.swift */,
 				34CA84EA260090E9007180C2 /* AppView.swift */,
-				341855C725FC8CDA0085EDDB /* GuildListView.swift */,
 				34CA84D826007F1C007180C2 /* MessagesView.swift */,
+				34C5E3682601391E001C2E6A /* TabViews */,
 				34CA84C52600191F007180C2 /* RowViews */,
 				34CA84E126008E3A007180C2 /* AuthViews */,
 				3402AE4A2600BF800085B26B /* Shapes */,
@@ -118,6 +124,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		34C5E3682601391E001C2E6A /* TabViews */ = {
+			isa = PBXGroup;
+			children = (
+				341855C725FC8CDA0085EDDB /* GuildListView.swift */,
+			);
+			path = TabViews;
+			sourceTree = "<group>";
+		};
 		34CA84C52600191F007180C2 /* RowViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				34CA84E226008E63007180C2 /* EmailSignInView.swift */,
+				34C5E35F26010CCA001C2E6A /* EmailRegisterView.swift */,
 			);
 			path = AuthViews;
 			sourceTree = "<group>";
@@ -139,6 +154,7 @@
 			children = (
 				34A06F002600110D003B5A49 /* MessageRepository.swift */,
 				34F58A1A25FC9D6C004D5970 /* GuildRepository.swift */,
+				34C5E36226010EE8001C2E6A /* UserRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -148,6 +164,7 @@
 			children = (
 				34F58A2125FC9DB9004D5970 /* Guild.swift */,
 				34F58A2925FC9F70004D5970 /* Message.swift */,
+				34C5E36526011036001C2E6A /* AppUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,12 +306,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34C5E36626011036001C2E6A /* AppUser.swift in Sources */,
+				34C5E36326010EE8001C2E6A /* UserRepository.swift in Sources */,
 				34CA84D926007F1C007180C2 /* MessagesView.swift in Sources */,
 				34F58A1B25FC9D6C004D5970 /* GuildRepository.swift in Sources */,
 				341855C825FC8CDA0085EDDB /* GuildListView.swift in Sources */,
 				34CA84E326008E63007180C2 /* EmailSignInView.swift in Sources */,
 				34F58A2A25FC9F70004D5970 /* Message.swift in Sources */,
 				34CA84C72600194F007180C2 /* GuildRowView.swift in Sources */,
+				34C5E36026010CCA001C2E6A /* EmailRegisterView.swift in Sources */,
 				341855C625FC8CDA0085EDDB /* iOSChatAppApp.swift in Sources */,
 				34F58A2225FC9DB9004D5970 /* Guild.swift in Sources */,
 				34CA84EB260090E9007180C2 /* AppView.swift in Sources */,

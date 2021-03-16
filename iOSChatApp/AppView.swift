@@ -12,7 +12,13 @@ struct AppView: View {
     
     var body: some View {
         if envObjects.authenticated {
-            GuildListView()
+            TabView() {
+                GuildListView()
+                    .tabItem {
+                        Image(systemName: "bubble.left.fill")
+                        Text("Guilds")
+                    }
+            }
         } else {
             EmailSignInView()
         }

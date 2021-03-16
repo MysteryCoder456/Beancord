@@ -68,18 +68,18 @@ struct MessagesView: View {
     }
     
     func sendMessage() {
-        message = message.trimmingCharacters(in: .whitespacesAndNewlines)
+        self.message = self.message.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if message == "" { return }
+        if self.message == "" { return }
         
-        print("Sending message: \(message)")
+        print("Sending message: \(self.message)")
         
         let currentUser = Auth.auth().currentUser
         if (currentUser == nil) { return }
         
-        let msg = Message(id: UUID().uuidString, authorID: currentUser!.uid, guildID: self.guild.id!, content: message)
+        let msg = Message(id: UUID().uuidString, authorID: currentUser!.uid, guildID: self.guild.id!, content: self.message)
         msgRepo.createMessage(message: msg)
-        message = ""
+        self.message = ""
         
         print("Sent message without issues")
     }
