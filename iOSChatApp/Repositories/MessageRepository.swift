@@ -31,7 +31,7 @@ class MessageRepository: ObservableObject {
     }
 
     func readMessages() {
-        db.collection("messages").whereField("guildID", isEqualTo: self.guild.id!).addSnapshotListener { querySnapshot, error in
+        db.collection("messages").whereField("guildID", isEqualTo: self.guild.id!).order(by: "dateSent").addSnapshotListener { querySnapshot, error in
             if let querySnapshot = querySnapshot {
                 self.messages = querySnapshot.documents.compactMap { document in
                     do {

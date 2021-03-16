@@ -12,24 +12,14 @@ struct GuildListView: View {
     
     var body: some View {
         NavigationView() {
-            if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
-                // SwiftUI Previews
-                List(previewGuildList) { guild in
-                    NavigationLink(destination: MessagesView(guild: guild)) {
-                        GuildRowView(guild: guild)
-                    }
+            let guilds = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" ? previewGuildList : guildRepo.guilds
+            
+            List(guilds) { guild in
+                NavigationLink(destination: MessagesView(guild: guild)) {
+                    GuildRowView(guild: guild)
                 }
-                .navigationBarTitle("Chat Guilds")
-                
-            } else {
-                // Normal
-                List(guildRepo.guilds) { guild in
-                    NavigationLink(destination: MessagesView(guild: guild)) {
-                        GuildRowView(guild: guild)
-                    }
-                }
-                .navigationBarTitle("Chat Guilds")
             }
+            .navigationBarTitle("Chat Guilds")
         }
     }
 }

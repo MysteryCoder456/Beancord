@@ -20,7 +20,28 @@ struct MessagesView: View {
     
     var body: some View {
         VStack {
-            Spacer()
+            let messages = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" ? previewMessageList : msgRepo.messages
+            
+            List(messages) { message in
+                let msg: Message = message
+                let isMyMsg = msg.authorID == Auth.auth().currentUser?.uid
+                
+                HStack {
+                    if isMyMsg {
+                        Spacer()
+                    }
+                    
+                    Text(msg.content)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .clipShape(ChatBubble(sentByMe: isMyMsg))
+                    
+                    if !isMyMsg {
+                        Spacer()
+                    }
+                }
+            }
             
             HStack {
                 TextField("Message", text: $message)
@@ -38,7 +59,8 @@ struct MessagesView: View {
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(Color.gray)
             )
-            .padding(.horizontal, 5)
+            .edgesIgnoringSafeArea(.all)
+            .padding(5)
         }
     }
     
