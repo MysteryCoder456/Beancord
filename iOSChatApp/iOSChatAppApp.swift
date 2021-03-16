@@ -8,15 +8,22 @@
 import SwiftUI
 import Firebase
 
+class EnvObjects: ObservableObject {
+    @Published var authenticated = Auth.auth().currentUser != nil
+}
+
 @main
 struct iOSChatAppApp: App {
+    var envObjects: EnvObjects
+    
     init() {
         FirebaseApp.configure()
+        envObjects = EnvObjects()
     }
     
     var body: some Scene {
         WindowGroup {
-            GuildListView()
+            AppView().environmentObject(envObjects)
         }
     }
 }

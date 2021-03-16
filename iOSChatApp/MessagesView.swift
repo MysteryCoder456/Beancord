@@ -6,9 +6,17 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct MessagesView: View {
+    var guild: Guild
+    @ObservedObject var msgRepo: MessageRepository
     @State var message: String = ""
+    
+    init(guild: Guild) {
+        self.guild = guild
+        msgRepo = MessageRepository(currentGuild: guild)
+    }
     
     var body: some View {
         VStack {
@@ -30,11 +38,20 @@ struct MessagesView: View {
     
     func sendMessage() {
         print("Sending message: \(message)")
+        
+        let currentUser = Auth.auth().currentUser
+        if (currentUser == nil) { return }
+        
+        let msg = Message(id: UUID().uuidString, authorID: currentUser!.uid, guildID: self.guild.id!, content: message)
+        msgRepo.createMessage(message: msg)
+        message = ""
+        
+        print("Sent message without issues")
     }
 }
 
 struct MessagesView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagesView()
+        MessagesView(guild: previewGuild)
     }
 }

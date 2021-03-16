@@ -9,20 +9,26 @@ import SwiftUI
 
 struct GuildListView: View {
     @ObservedObject var guildRepo = GuildRepository()
-    @State var guilds: Array<Guild>?
     
     var body: some View {
         NavigationView() {
-            List(guilds ?? previewGuildList) { guild in
-                GuildRowView(guild: guild)
-            }
-            .navigationBarTitle("Chat Guilds")
-        }
-        .onAppear() {
             if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
-                guilds = previewGuildList
+                // SwiftUI Previews
+                List(previewGuildList) { guild in
+                    NavigationLink(destination: MessagesView(guild: guild)) {
+                        GuildRowView(guild: guild)
+                    }
+                }
+                .navigationBarTitle("Chat Guilds")
+                
             } else {
-                guilds = guildRepo.guilds
+                // Normal
+                List(guildRepo.guilds) { guild in
+                    NavigationLink(destination: MessagesView(guild: guild)) {
+                        GuildRowView(guild: guild)
+                    }
+                }
+                .navigationBarTitle("Chat Guilds")
             }
         }
     }
