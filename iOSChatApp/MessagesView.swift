@@ -8,25 +8,11 @@
 import SwiftUI
 import FirebaseAuth
 
-class ScrollToModel: ObservableObject {
-    enum Action {
-        case top
-        case bottom
-    }
-    
-    @Published var direction: Action? = nil
-}
-
 struct MessagesView: View {
     var guild: Guild
     @ObservedObject var msgRepo: MessageRepository
+    @ObservedObject var userRepo = UserRepository()
     @State var message: String = ""
-    @StateObject var vm = ScrollToModel()
-    @ObservedObject var userRepo = UserRepository() {
-        didSet {
-            vm.direction = .bottom
-        }
-    }
     
     init(guild: Guild) {
         self.guild = guild
@@ -37,52 +23,31 @@ struct MessagesView: View {
         VStack {
             let messages = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" ? previewMessageList : msgRepo.messages
             
-            ScrollView {
-                ScrollViewReader { sp in
-                    LazyVStack {
-                        ForEach(messages, id: \.self) { message in
-                            let msg: Message = message
-                            let author = userRepo.users.first(where: { $0.userID == msg.authorID })
-                            let isMyMsg = msg.authorID == Auth.auth().currentUser?.uid
-                            
-                            HStack {
-                                if isMyMsg { Spacer() }
-                            
-                                VStack {
-                                    Text(msg.content)
-                                        .padding()
-                                        .foregroundColor(.white)
-                                        .background(Color.blue)
-                                        .clipShape(ChatBubble(sentByMe: isMyMsg))
-                                        .frame(maxWidth: .infinity, alignment: isMyMsg ? .trailing : .leading)
-                                    
-                                    Text(author?.username ?? "Unknown")
-                                        .font(.footnote)
-                                        .foregroundColor(.secondary)
-                                        .frame(maxWidth: .infinity, alignment: isMyMsg ? .trailing : .leading)
-                                }
-                                
-                                if !isMyMsg { Spacer() }
-                            }
-                        }
-                    }
-                    .onAppear() {
-                        vm.direction = .bottom
-                    }
-                    .onReceive(vm.$direction) { action in
-                        guard !messages.isEmpty else { return }
+            CustomScrollView(scrollToEnd: true) {
+                LazyVStack {
+                    ForEach(messages, id: \.self) { message in
+                        let msg: Message = message
+                        let author = userRepo.users.first(where: { $0.userID == msg.authorID })
+                        let isMyMsg = msg.authorID == Auth.auth().currentUser?.uid
                         
-                        withAnimation {
-                            switch action {
-                            case .top:
-                                sp.scrollTo(messages.first!, anchor: .top)
+                        HStack {
+                            if isMyMsg { Spacer() }
+                        
+                            VStack {
+                                Text(msg.content)
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.blue)
+                                    .clipShape(ChatBubble(sentByMe: isMyMsg))
+                                    .frame(maxWidth: .infinity, alignment: isMyMsg ? .trailing : .leading)
                                 
-                            case .bottom:
-                                sp.scrollTo(messages.last!, anchor: .bottom)
-                                
-                            default:
-                                return
+                                Text(author?.username ?? "Unknown")
+                                    .font(.footnote)
+                                    .foregroundColor(.secondary)
+                                    .frame(maxWidth: .infinity, alignment: isMyMsg ? .trailing : .leading)
                             }
+                            
+                            if !isMyMsg { Spacer() }
                         }
                     }
                 }
@@ -124,7 +89,6 @@ struct MessagesView: View {
         let msg = Message(id: UUID().uuidString, authorID: currentUser!.uid, guildID: self.guild.id!, content: self.message)
         msgRepo.createMessage(message: msg)
         self.message = ""
-        vm.direction = .bottom
         
         print("Sent message without issues")
     }

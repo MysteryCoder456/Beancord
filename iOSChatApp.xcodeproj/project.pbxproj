@@ -13,6 +13,7 @@
 		341855C825FC8CDA0085EDDB /* GuildListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341855C725FC8CDA0085EDDB /* GuildListView.swift */; };
 		341855CA25FC8CDC0085EDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341855C925FC8CDC0085EDDB /* Assets.xcassets */; };
 		341855CD25FC8CDC0085EDDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 341855CC25FC8CDC0085EDDB /* Preview Assets.xcassets */; };
+		343DACE42601ED2700FE3735 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343DACE32601ED2700FE3735 /* CustomScrollView.swift */; };
 		34A06F012600110D003B5A49 /* MessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A06F002600110D003B5A49 /* MessageRepository.swift */; };
 		34C5E36026010CCA001C2E6A /* EmailRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E35F26010CCA001C2E6A /* EmailRegisterView.swift */; };
 		34C5E36326010EE8001C2E6A /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C5E36226010EE8001C2E6A /* UserRepository.swift */; };
@@ -39,6 +40,7 @@
 		341855C925FC8CDC0085EDDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		341855CC25FC8CDC0085EDDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		341855CE25FC8CDC0085EDDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		343DACE32601ED2700FE3735 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		34A06F002600110D003B5A49 /* MessageRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageRepository.swift; sourceTree = "<group>"; };
 		34C5E35F26010CCA001C2E6A /* EmailRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegisterView.swift; sourceTree = "<group>"; };
 		34C5E36226010EE8001C2E6A /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				34C5E3682601391E001C2E6A /* TabViews */,
 				34CA84C52600191F007180C2 /* RowViews */,
 				34CA84E126008E3A007180C2 /* AuthViews */,
+				343DACDA2601EA6E00FE3735 /* CustomViews */,
 				3402AE4A2600BF800085B26B /* Shapes */,
 				34F58A1F25FC9D9E004D5970 /* Models */,
 				34F58A1925FC9D3E004D5970 /* Repositories */,
@@ -124,6 +127,14 @@
 				341855CC25FC8CDC0085EDDB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		343DACDA2601EA6E00FE3735 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				343DACE32601ED2700FE3735 /* CustomScrollView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		34C5E3682601391E001C2E6A /* TabViews */ = {
@@ -318,6 +329,7 @@
 				34F58A2A25FC9F70004D5970 /* Message.swift in Sources */,
 				34CA84C72600194F007180C2 /* GuildRowView.swift in Sources */,
 				34C5E36026010CCA001C2E6A /* EmailRegisterView.swift in Sources */,
+				343DACE42601ED2700FE3735 /* CustomScrollView.swift in Sources */,
 				341855C625FC8CDA0085EDDB /* iOSChatAppApp.swift in Sources */,
 				34F58A2225FC9DB9004D5970 /* Guild.swift in Sources */,
 				34CA84EB260090E9007180C2 /* AppView.swift in Sources */,
