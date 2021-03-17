@@ -23,6 +23,7 @@ struct GuildRowView: View {
 
             Text(guild.name)
                 .font(.title)
+                .multilineTextAlignment(.center)
             
             Spacer()
         }

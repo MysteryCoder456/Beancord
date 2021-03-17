@@ -29,6 +29,10 @@ struct MessagesView: View {
                         let msg: Message = message
                         let author = userRepo.users.first(where: { $0.userID == msg.authorID })
                         let isMyMsg = msg.authorID == Auth.auth().currentUser?.uid
+                        let nextExists = !(msg == messages.last)
+                        let msgIndex = messages.firstIndex(where: { $0.id == msg.id })
+                        let nextMsg = nextExists ? messages[msgIndex! + 1] : nil
+                        let nextAuthorSame = msg.authorID == nextMsg?.authorID
                         
                         HStack {
                             if isMyMsg { Spacer() }
@@ -41,10 +45,12 @@ struct MessagesView: View {
                                     .clipShape(ChatBubble(sentByMe: isMyMsg))
                                     .frame(maxWidth: .infinity, alignment: isMyMsg ? .trailing : .leading)
                                 
-                                Text(author?.username ?? "Unknown")
-                                    .font(.footnote)
-                                    .foregroundColor(.secondary)
-                                    .frame(maxWidth: .infinity, alignment: isMyMsg ? .trailing : .leading)
+                                if !nextAuthorSame {
+                                    Text(author?.username ?? "Unknown")
+                                        .font(.footnote)
+                                        .foregroundColor(.secondary)
+                                        .frame(maxWidth: .infinity, alignment: isMyMsg ? .trailing : .leading)
+                                }
                             }
                             
                             if !isMyMsg { Spacer() }
