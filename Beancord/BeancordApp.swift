@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 class EnvObjects: ObservableObject {
     @Published var authenticated = Auth.auth().currentUser != nil

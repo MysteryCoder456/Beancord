@@ -16,13 +16,11 @@ struct EmailRegisterView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
-            VStack {
-                Text("Register with Email")
-                    .font(.largeTitle)
-                    .bold()
-            }
-            
             Spacer()
+            
+            Text("Register with Email")
+                .font(.largeTitle)
+                .bold()
             
             // Username Field
             HStack(alignment: .center) {
@@ -34,6 +32,7 @@ struct EmailRegisterView: View {
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
+                    .stroke(lineWidth: 5)
                     .stroke(Color.gray)
             )
             
@@ -47,6 +46,7 @@ struct EmailRegisterView: View {
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
+                    .stroke(lineWidth: 5)
                     .stroke(Color.gray)
             )
             
@@ -60,6 +60,7 @@ struct EmailRegisterView: View {
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
+                    .stroke(lineWidth: 5)
                     .stroke(Color.gray)
             )
             

@@ -16,43 +16,51 @@ struct EmailSignInView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
-            VStack {
-                Text("Welcome to")
-                
-                Text("Beancord")
-                    .font(.largeTitle)
-                    .bold()
-            }
-            
             Spacer()
             
-            Text("Please login to continue")
-            
-            // Email Field
-            HStack(alignment: .center) {
-                Text("Email:")
-                TextField("you@example.com", text: $email)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
+            VStack {
+                VStack {
+                    Text("Welcome to")
+                    
+                    Text("Beancord")
+                        .font(.system(size: 60))
+                        .bold()
+                }
+                .padding(.bottom, 30)
+                
+                Text("Please login to continue")
+                
+                VStack(spacing: 20) {
+                    // Email Field
+                    HStack(alignment: .center) {
+                        Text("Email:")
+                        TextField("you@example.com", text: $email)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                    }
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(lineWidth: 5)
+                            .stroke(Color.gray)
+                    )
+                    
+                    // Password Field
+                    HStack(alignment: .center) {
+                        Text("Password:")
+                        SecureField("p@ssw0rd", text: $password)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                    }
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(lineWidth: 5)
+                            .stroke(Color.gray)
+                    )
+                }
             }
-            .padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.gray)
-            )
-            
-            // Password Field
-            HStack(alignment: .center) {
-                Text("Password:")
-                SecureField("p@ssw0rd", text: $password)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-            }
-            .padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.gray)
-            )
+            .padding(.bottom, 30)
             
             Spacer()
 
