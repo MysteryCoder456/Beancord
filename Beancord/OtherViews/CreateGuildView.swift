@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct CreateGuildView: View {
     @ObservedObject var guildRepo = GuildRepository()
@@ -44,7 +45,16 @@ struct CreateGuildView: View {
     }
     
     func createGuild() {
+        self.guildName = self.guildName.trimmingCharacters(in: .whitespacesAndNewlines)
+        if (self.guildName == "") { return }
         
+        if let currentUser = Auth.auth().currentUser {
+            let newGuild = Guild(id: UUID().uuidString, name: self.guildName, ownerID: currentUser.uid)
+            guildRepo.createGuild(guild: newGuild)
+            
+            self.guildName = ""
+            print("Created new guild with name \(self.guildName)")
+        }
     }
 }
 
