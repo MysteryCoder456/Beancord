@@ -13,12 +13,11 @@ struct CreateGuildView: View {
     @State var guildName: String = ""
     
     var body: some View {
-        VStack(alignment: .center, spacing: 20) {
+        VStack(spacing: 20) {
             Spacer()
             
             Text("New Chat Guild")
                 .font(.largeTitle)
-                .bold()
             
             // Username Field
             HStack(alignment: .center) {

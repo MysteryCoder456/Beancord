@@ -18,7 +18,9 @@ struct OtherView: View {
                     Text("Create a chat guild")
                 }
                 
-                Text("About Beancord")
+                NavigationLink(destination: AboutView()) {
+                    Text("About Beancord")
+                }
                 
                 Button(action: {
                     do {

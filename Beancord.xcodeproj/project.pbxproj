@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34AC23232603AFC400FCDBC1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC23222603AFC400FCDBC1 /* AboutView.swift */; };
 		34AF730726032C800056FE13 /* BeancordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF730626032C800056FE13 /* BeancordApp.swift */; };
 		34AF730B26032C860056FE13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34AF730A26032C860056FE13 /* Assets.xcassets */; };
 		34AF730E26032C860056FE13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34AF730D26032C860056FE13 /* Preview Assets.xcassets */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34AC23222603AFC400FCDBC1 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		34AF730326032C800056FE13 /* Beancord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beancord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34AF730626032C800056FE13 /* BeancordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeancordApp.swift; sourceTree = "<group>"; };
 		34AF730A26032C860056FE13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				34AF731F26032D2C0056FE13 /* CreateGuildView.swift */,
+				34AC23222603AFC400FCDBC1 /* AboutView.swift */,
 			);
 			path = OtherViews;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				34AF736B26032DF30056FE13 /* UserRepository.swift in Sources */,
 				34AF736926032DF30056FE13 /* GuildListView.swift in Sources */,
 				34AF736726032DF30056FE13 /* EmailRegisterView.swift in Sources */,
+				34AC23232603AFC400FCDBC1 /* AboutView.swift in Sources */,
 				34AF732A26032D2C0056FE13 /* CreateGuildView.swift in Sources */,
 				34AF736F26032DF30056FE13 /* Guild.swift in Sources */,
 				34AF736626032DF30056FE13 /* ChatBubble.swift in Sources */,

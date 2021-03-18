@@ -15,7 +15,7 @@ struct EmailSignInView: View {
     @State var register: Bool = false
     
     var body: some View {
-        VStack(alignment: .center, spacing: 20) {
+        VStack(spacing: 20) {
             Spacer()
             
             VStack {
