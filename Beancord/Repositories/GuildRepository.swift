@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 
@@ -14,6 +15,7 @@ class GuildRepository: ObservableObject {
     let db = Firestore.firestore()
 
     @Published var guilds: Array<Guild> = []
+    @Published var ownedGuilds: Array<Guild> = []
     
     init() {
         readGuilds()
@@ -44,24 +46,24 @@ class GuildRepository: ObservableObject {
         }
     }
     
-//    func readUserOwnedGuilds() {
-//        if let currentUserID = Auth.auth().currentUser?.uid {
-//            db.collection("guilds").whereField("ownerID", isEqualTo: currentUserID).addSnapshotListener { querySnapshot, error in
-//                if let querySnapshot = querySnapshot {
-//                    self.userOwnedGuilds = querySnapshot.documents.compactMap { document in
-//                        do {
-//                            let x = try document.data(as: Guild.self)
-//                            return x
-//                        } catch {
-//                            print(error)
-//                        }
-//
-//                        return nil
-//                    }
-//                }
-//            }
-//        }
-//    }
+    func readUserOwnedGuilds() {
+        if let currentUserID = Auth.auth().currentUser?.uid {
+            db.collection("guilds").whereField("ownerID", isEqualTo: currentUserID).addSnapshotListener { querySnapshot, error in
+                if let querySnapshot = querySnapshot {
+                    self.ownedGuilds = querySnapshot.documents.compactMap { document in
+                        do {
+                            let x = try document.data(as: Guild.self)
+                            return x
+                        } catch {
+                            print(error)
+                        }
+
+                        return nil
+                    }
+                }
+            }
+        }
+    }
     
     func updateGuild(guild: Guild) {
         do {

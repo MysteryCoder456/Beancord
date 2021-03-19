@@ -22,3 +22,8 @@ var previewGuildList = [
     Guild(id: UUID().uuidString, name: "Guild 3", ownerID: UUID().uuidString),
     Guild(id: UUID().uuidString, name: "Guild 4", ownerID: UUID().uuidString)
 ]
+var previewOwnedGuildList = [
+    Guild(id: UUID().uuidString, name: "My Guild 1", ownerID: UUID().uuidString),
+    Guild(id: UUID().uuidString, name: "My Guild 2", ownerID: UUID().uuidString),
+    Guild(id: UUID().uuidString, name: "My Guild 3", ownerID: UUID().uuidString)
+]
