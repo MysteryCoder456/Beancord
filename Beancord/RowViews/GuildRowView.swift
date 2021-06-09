@@ -34,6 +34,6 @@ struct GuildRowView: View {
 struct GuildRowView_Previews: PreviewProvider {
     static var previews: some View {
         GuildRowView(guild: previewGuild)
-            .previewLayout(.fixed(width: 350, height: 100))
+            .previewLayout(.fixed(width: 400, height: 100))
     }
 }

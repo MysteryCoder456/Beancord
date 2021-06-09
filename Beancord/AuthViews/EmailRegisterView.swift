@@ -25,6 +25,8 @@ struct EmailRegisterView: View {
             // Username Field
             HStack(alignment: .center) {
                 Text("Username:")
+                    .bold()
+                
                 TextField("cool_nick_name", text: $username)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
@@ -39,6 +41,8 @@ struct EmailRegisterView: View {
             // Email Field
             HStack(alignment: .center) {
                 Text("Email:")
+                    .bold()
+                
                 TextField("you@example.com", text: $email)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
@@ -53,6 +57,8 @@ struct EmailRegisterView: View {
             // Password Field
             HStack(alignment: .center) {
                 Text("Password:")
+                    .bold()
+                
                 SecureField("p@ssw0rd", text: $password)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)

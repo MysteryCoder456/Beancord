@@ -19,6 +19,7 @@ class GuildRepository: ObservableObject {
     
     init() {
         readGuilds()
+        readUserOwnedGuilds()
     }
 
     func createGuild(guild: Guild) {

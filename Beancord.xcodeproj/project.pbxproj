@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3414373D2604E48200358B32 /* GuildEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414373C2604E48200358B32 /* GuildEditView.swift */; };
 		34AC23232603AFC400FCDBC1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC23222603AFC400FCDBC1 /* AboutView.swift */; };
 		34AF730726032C800056FE13 /* BeancordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF730626032C800056FE13 /* BeancordApp.swift */; };
 		34AF730B26032C860056FE13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34AF730A26032C860056FE13 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3414373C2604E48200358B32 /* GuildEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildEditView.swift; sourceTree = "<group>"; };
 		34AC23222603AFC400FCDBC1 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		34AF730326032C800056FE13 /* Beancord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beancord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34AF730626032C800056FE13 /* BeancordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeancordApp.swift; sourceTree = "<group>"; };
@@ -72,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3414373F2604E48B00358B32 /* GuildViews */ = {
+			isa = PBXGroup;
+			children = (
+				34AF731C26032D2C0056FE13 /* MessagesView.swift */,
+				3414373C2604E48200358B32 /* GuildEditView.swift */,
+			);
+			path = GuildViews;
+			sourceTree = "<group>";
+		};
 		3468A38426033BB900B6FD6B /* OtherViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,9 +115,9 @@
 			children = (
 				34AF730626032C800056FE13 /* BeancordApp.swift */,
 				34AF731826032D2C0056FE13 /* AppView.swift */,
-				34AF731C26032D2C0056FE13 /* MessagesView.swift */,
 				34AF735826032DF30056FE13 /* TabViews */,
 				3468A38426033BB900B6FD6B /* OtherViews */,
+				3414373F2604E48B00358B32 /* GuildViews */,
 				34AF735526032DF30056FE13 /* AuthViews */,
 				34AF735126032DF30056FE13 /* CustomViews */,
 				34AF736326032DF30056FE13 /* RowViews */,
@@ -325,6 +336,7 @@
 				34AF736E26032DF30056FE13 /* AppUser.swift in Sources */,
 				34AF736B26032DF30056FE13 /* UserRepository.swift in Sources */,
 				34AF736926032DF30056FE13 /* GuildListView.swift in Sources */,
+				3414373D2604E48200358B32 /* GuildEditView.swift in Sources */,
 				34AF736726032DF30056FE13 /* EmailRegisterView.swift in Sources */,
 				34AC23232603AFC400FCDBC1 /* AboutView.swift in Sources */,
 				34AF732A26032D2C0056FE13 /* CreateGuildView.swift in Sources */,

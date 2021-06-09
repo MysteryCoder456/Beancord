@@ -22,6 +22,8 @@ struct CreateGuildView: View {
             // Username Field
             HStack(alignment: .center) {
                 Text("Name:")
+                    .bold()
+                
                 TextField("Amazing Guild Name", text: $guildName)
                     .disableAutocorrection(true)
                     .autocapitalization(.none)
