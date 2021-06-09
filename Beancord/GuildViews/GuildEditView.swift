@@ -11,34 +11,32 @@ struct GuildEditView: View {
     @State var guild: Guild
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                
-                HStack(alignment: .center) {
-                    Text("Name:")
-                        .bold()
+        // This view doesn't have any NavigationLinks
+        // It's just a NavigationView for the title on top
+        NavigationView {
+            List {
+                VStack(spacing: 20) {
                     
-                    TextField("Your guild's name", text: $guild.name)
-                        .disableAutocorrection(true)
-                        .autocapitalization(.none)
+                    HStack(alignment: .center) {
+                        Text("Name:")
+                            .bold()
+                        
+                        TextField("Your guild's name", text: $guild.name)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                    }
+                    
                 }
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(lineWidth: 5)
-                        .stroke(Color.gray)
-                )
-                
+                .frame(width: .infinity, height: .infinity)
+                .padding(.horizontal)
             }
-            .frame(width: .infinity, height: .infinity)
-            .padding(.horizontal)
+            .navigationTitle("Editing Guild")
+            .navigationBarItems(trailing:
+                Button(action: save) {
+                    Text("Save")
+                }
+            )
         }
-        .navigationTitle("Editing Guild")
-        .navigationBarItems(trailing:
-            Button(action: save) {
-                Text("Save")
-            }
-        )
     }
     
     func save() {
