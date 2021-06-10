@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct GuildListView: View {
+    // Pass these repositories into other views
     @ObservedObject var guildRepo = GuildRepository()
+    @ObservedObject var userRepo = UserRepository()
+    
     @State var editMode: Bool = false
     
     var body: some View {
@@ -19,11 +22,11 @@ struct GuildListView: View {
             List(self.editMode ? ownedGuilds : guilds) { guild in
                 
                 if self.editMode {
-                    NavigationLink(destination: GuildEditView(guild: guild, repository: guildRepo)) {
+                    NavigationLink(destination: GuildEditView(guild: guild, guildRepo: guildRepo, userRepo: userRepo)) {
                         GuildRowView(guild: guild)
                     }
                 } else {
-                    NavigationLink(destination: MessagesView(guild: guild)) {
+                    NavigationLink(destination: MessagesView(guild: guild, userRepo: userRepo)) {
                         GuildRowView(guild: guild)
                     }
                 }

@@ -9,13 +9,15 @@ import SwiftUI
 import FirebaseAuth
 
 struct MessagesView: View {
-    var guild: Guild
     @ObservedObject var msgRepo: MessageRepository
-    @ObservedObject var userRepo = UserRepository()
+    @ObservedObject var userRepo: UserRepository
     @State var message: String = ""
     
-    init(guild: Guild) {
+    var guild: Guild
+    
+    init(guild: Guild, userRepo: UserRepository) {
         self.guild = guild
+        self.userRepo = userRepo
         msgRepo = MessageRepository(currentGuild: guild)
     }
     
@@ -100,6 +102,6 @@ struct MessagesView: View {
 
 struct MessagesView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagesView(guild: previewGuild)
+        MessagesView(guild: previewGuild, userRepo: UserRepository())
     }
 }
