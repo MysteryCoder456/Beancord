@@ -13,6 +13,7 @@ struct Guild: Identifiable, Codable {
     @DocumentID var id: String?
     var name: String
     var ownerID: String
+    var members: Array<String> = []
 }
 
 var previewGuild = Guild(id: UUID().uuidString, name: "Guild Name", ownerID: UUID().uuidString)
