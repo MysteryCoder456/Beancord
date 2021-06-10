@@ -94,7 +94,8 @@ struct GuildEditView: View {
                 self.secondaryAlertMessage = "A new user was sucessfully added to this guild."
                 self.showingAlert = true
                 
-                self.saveDetails()
+                self.guildRepo.updateGuild(guild: self.guild)
+                print("\(newMember.username) has been added to \(self.guild.name)")
                 
             }
             
@@ -105,7 +106,7 @@ struct GuildEditView: View {
             
             // No user was found :(
             self.primaryAlertMessage = "Unable to add member"
-            self.secondaryAlertMessage = "A member with this username was not found, please check if the email you entered is correct."
+            self.secondaryAlertMessage = "A user with this email address was not found, please check if the email you entered is correct."
             self.showingAlert = true
             
         }
