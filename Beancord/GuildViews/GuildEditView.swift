@@ -43,7 +43,11 @@ struct GuildEditView: View {
                     Text("Add")
                 }
                 .alert(isPresented: $showingAlert) {
-                    Alert(title: Text(primaryAlertMessage), message: Text(secondaryAlertMessage), dismissButton: .default(Text("Dimiss")))
+                    Alert(
+                        title: Text(primaryAlertMessage),
+                        message: Text(secondaryAlertMessage),
+                        dismissButton: .default(Text("Dismiss"))
+                    )
                 }
                 
             }

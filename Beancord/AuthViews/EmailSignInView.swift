@@ -8,13 +8,16 @@
 import SwiftUI
 import FirebaseAuth
 
-// TODO: Add alerts if error occurs during login 
-
 struct EmailSignInView: View {
     @EnvironmentObject var envObjects: EnvObjects
+    
     @State var email: String = ""
     @State var password: String = ""
     @State var register: Bool = false
+    
+    @State var showingAlert = false
+    @State var primaryAlertMessage = ""
+    @State var secondaryAlertMessage = ""
     
     var body: some View {
         VStack(spacing: 20) {
@@ -74,6 +77,13 @@ struct EmailSignInView: View {
                 Text("Login")
                     .font(.title)
             }
+            .alert(isPresented: $showingAlert) {
+                Alert(
+                    title: Text(primaryAlertMessage),
+                    message: Text(secondaryAlertMessage),
+                    dismissButton: .default(Text("Dismiss"))
+                )
+            }
             
             Button(action: { self.register = true }) {
                 Text("Don't have an account?")
@@ -84,15 +94,25 @@ struct EmailSignInView: View {
     }
     
     func login() {
-        Auth.auth().signIn(withEmail: self.email, password: self.password, completion: {result, error in
+        Auth.auth().signIn(withEmail: self.email, password: self.password, completion: { result, error in
             if let error = error {
+                
                 print(error)
+                
+                // Show error alert
+                self.primaryAlertMessage = "Unable to login"
+                self.secondaryAlertMessage = error.localizedDescription
+                self.showingAlert = true
+                
                 self.password = ""
+                
             } else {
+                
                 print("\(self.email) has been logged in!")
                 self.email = ""
                 self.password = ""
                 envObjects.authenticated = true
+                
             }
         })
     }
