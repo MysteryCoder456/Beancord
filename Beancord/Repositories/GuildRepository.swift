@@ -68,7 +68,7 @@ class GuildRepository: ObservableObject {
     
     func updateGuild(guild: Guild) {
         do {
-            try db.collection("guild").document(guild.id!).setData(from: guild)
+            try db.collection("guilds").document(guild.id!).setData(from: guild)
         } catch {
             print(error)
         }

@@ -9,43 +9,41 @@ import SwiftUI
 
 struct GuildEditView: View {
     @State var guild: Guild
+    var repository: GuildRepository
     
     var body: some View {
-        // This view doesn't have any NavigationLinks
-        // It's just a NavigationView for the title on top
-        NavigationView {
-            List {
-                VStack(spacing: 20) {
+        List {
+            VStack(spacing: 20) {
+                
+                HStack(alignment: .center) {
+                    Text("Name:")
+                        .bold()
                     
-                    HStack(alignment: .center) {
-                        Text("Name:")
-                            .bold()
-                        
-                        TextField("Your guild's name", text: $guild.name)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                    }
-                    
+                    TextField("Your guild's name", text: $guild.name)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
                 }
-                .frame(width: .infinity, height: .infinity)
-                .padding(.horizontal)
+                
             }
-            .navigationTitle("Editing Guild")
-            .navigationBarItems(trailing:
-                Button(action: save) {
+            .padding(.horizontal)
+            
+            Button(action: save) {
+                HStack {
+                    Spacer()
                     Text("Save")
+                    Spacer()
                 }
-            )
+            }
         }
     }
     
     func save() {
-        
+        repository.updateGuild(guild: guild)
     }
 }
 
 struct GuildEditView_Previews: PreviewProvider {
     static var previews: some View {
-        GuildEditView(guild: previewGuild)
+        GuildEditView(guild: previewGuild, repository: GuildRepository())
     }
 }

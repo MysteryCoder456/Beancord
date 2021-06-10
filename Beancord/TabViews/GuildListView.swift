@@ -19,7 +19,7 @@ struct GuildListView: View {
             List(self.editMode ? ownedGuilds : guilds) { guild in
                 
                 if self.editMode {
-                    NavigationLink(destination: GuildEditView(guild: guild)) {
+                    NavigationLink(destination: GuildEditView(guild: guild, repository: guildRepo)) {
                         GuildRowView(guild: guild)
                     }
                 } else {
