@@ -54,7 +54,7 @@ struct GuildEditView: View {
             Button(action: saveDetails) {
                 HStack {
                     Spacer()
-                    Text("Save")
+                    Text("Save")  // Change text color to blue
                     Spacer()
                 }
             })

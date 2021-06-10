@@ -8,6 +8,8 @@
 import SwiftUI
 import FirebaseAuth
 
+// TODO: Add alerts if error occurs during login 
+
 struct EmailSignInView: View {
     @EnvironmentObject var envObjects: EnvObjects
     @State var email: String = ""

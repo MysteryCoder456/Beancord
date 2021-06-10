@@ -8,6 +8,8 @@
 import SwiftUI
 import FirebaseAuth
 
+// TODO: Add alerts if error occurs during registration
+
 struct EmailRegisterView: View {
     @EnvironmentObject var envObjects: EnvObjects
     @State var username: String = ""
