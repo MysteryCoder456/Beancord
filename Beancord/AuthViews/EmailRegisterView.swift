@@ -15,7 +15,7 @@ struct EmailRegisterView: View {
     @State var password: String = ""
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 13) {
             Spacer()
             
             Text("Register with Email")

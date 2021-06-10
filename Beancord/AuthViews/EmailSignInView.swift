@@ -30,7 +30,7 @@ struct EmailSignInView: View {
                 
                 Text("Please login to continue")
                 
-                VStack(spacing: 20) {
+                VStack(spacing: 13) {
                     // Email Field
                     HStack(alignment: .center) {
                         Text("Email:")
