@@ -116,8 +116,6 @@
 				34AF730626032C800056FE13 /* BeancordApp.swift */,
 				34AF731826032D2C0056FE13 /* AppView.swift */,
 				34AF735826032DF30056FE13 /* TabViews */,
-				3468A38426033BB900B6FD6B /* OtherViews */,
-				3414373F2604E48B00358B32 /* GuildViews */,
 				34AF735526032DF30056FE13 /* AuthViews */,
 				34AF735126032DF30056FE13 /* CustomViews */,
 				34AF736326032DF30056FE13 /* RowViews */,
@@ -170,6 +168,8 @@
 			children = (
 				34AF735926032DF30056FE13 /* GuildListView.swift */,
 				34AF735A26032DF30056FE13 /* OtherView.swift */,
+				3414373F2604E48B00358B32 /* GuildViews */,
+				3468A38426033BB900B6FD6B /* OtherViews */,
 			);
 			path = TabViews;
 			sourceTree = "<group>";
