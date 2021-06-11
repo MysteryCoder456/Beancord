@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct GuildListView: View {
-    // Pass these repositories into other views
-    @ObservedObject var guildRepo = GuildRepository()
-    @ObservedObject var userRepo = UserRepository()
+    @ObservedObject var guildRepo: GuildRepository
+    @ObservedObject var userRepo: UserRepository
     
     @State var editMode: Bool = false
     
@@ -44,6 +43,6 @@ struct GuildListView: View {
 
 struct GuildListView_Previews: PreviewProvider {
     static var previews: some View {
-        GuildListView()
+        GuildListView(guildRepo: GuildRepository(), userRepo: UserRepository())
     }
 }

@@ -11,10 +11,13 @@ import FirebaseAuth
 struct OtherView: View {
     @EnvironmentObject var envObjects: EnvObjects
     
+    @ObservedObject var guildRepo: GuildRepository
+    @ObservedObject var userRepo: UserRepository
+    
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: CreateGuildView()) {
+                NavigationLink(destination: CreateGuildView(guildRepo: guildRepo)) {
                     Text("Create a chat guild")
                 }
                 
@@ -42,6 +45,6 @@ struct OtherView: View {
 
 struct OtherView_Previews: PreviewProvider {
     static var previews: some View {
-        OtherView()
+        OtherView(guildRepo: GuildRepository(), userRepo: UserRepository())
     }
 }

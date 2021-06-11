@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseAuth
 
 struct CreateGuildView: View {
-    @ObservedObject var guildRepo = GuildRepository()
+    @ObservedObject var guildRepo: GuildRepository
     @State var guildName: String = ""
     
     var body: some View {
@@ -61,6 +61,6 @@ struct CreateGuildView: View {
 
 struct CreateGuildView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateGuildView()
+        CreateGuildView(guildRepo: GuildRepository())
     }
 }
