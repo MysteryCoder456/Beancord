@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -31,17 +31,19 @@ class GuildRepository: ObservableObject {
     }
 
     func readGuilds() {
-        db.collection("guilds").addSnapshotListener { querySnapshot, error in
-            if let querySnapshot = querySnapshot {
-                self.guilds = querySnapshot.documents.compactMap { document in
-                    do {
-                        let x = try document.data(as: Guild.self)
-                        return x
-                    } catch {
-                        print(error)
-                    }
+        if let currentUserID = Auth.auth().currentUser?.uid {
+            db.collection("guilds").addSnapshotListener { querySnapshot, error in
+                if let querySnapshot = querySnapshot {
+                    self.guilds = querySnapshot.documents.compactMap { document in
+                        do {
+                            
+                            let x = try document.data(as: Guild.self)
+                            if x?.ownerID == currentUserID || x?.members.contains(currentUserID) == true { return x }
+                            
+                        } catch { print(error) }
 
-                    return nil
+                        return nil
+                    }
                 }
             }
         }
@@ -53,11 +55,11 @@ class GuildRepository: ObservableObject {
                 if let querySnapshot = querySnapshot {
                     self.ownedGuilds = querySnapshot.documents.compactMap { document in
                         do {
+                            
                             let x = try document.data(as: Guild.self)
                             return x
-                        } catch {
-                            print(error)
-                        }
+                            
+                        } catch { print(error) }
 
                         return nil
                     }

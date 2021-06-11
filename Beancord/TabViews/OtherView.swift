@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FirebaseAuth
+import Firebase
 
 struct OtherView: View {
     @EnvironmentObject var envObjects: EnvObjects
@@ -25,14 +25,7 @@ struct OtherView: View {
                     Text("About Beancord")
                 }
                 
-                Button(action: {
-                    do {
-                        try Auth.auth().signOut()
-                        envObjects.authenticated = false
-                    } catch {
-                        print(error)
-                    }
-                }) {
+                Button(action: signOut) {
                     Text("Sign Out")
                         .bold()
                         .foregroundColor(.red)
@@ -40,6 +33,15 @@ struct OtherView: View {
             }
             .navigationTitle("Other")
         }
+    }
+    
+    func signOut() {
+        do {
+            
+            try Auth.auth().signOut()
+            envObjects.authenticated = false
+            
+        } catch { print(error) }
     }
 }
 
