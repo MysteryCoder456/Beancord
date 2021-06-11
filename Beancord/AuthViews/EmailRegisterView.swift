@@ -8,13 +8,15 @@
 import SwiftUI
 import FirebaseAuth
 
-// TODO: Add alerts if error occurs during registration
-
 struct EmailRegisterView: View {
     @EnvironmentObject var envObjects: EnvObjects
     @State var username: String = ""
     @State var email: String = ""
     @State var password: String = ""
+    
+    @State var showingAlert = false
+    @State var primaryAlertMessage = ""
+    @State var secondaryAlertMessage = ""
     
     var body: some View {
         VStack(spacing: 13) {
@@ -78,6 +80,13 @@ struct EmailRegisterView: View {
                 Text("Register")
                     .font(.title)
             }
+            .alert(isPresented: $showingAlert) {
+                Alert(
+                    title: Text(primaryAlertMessage),
+                    message: Text(secondaryAlertMessage),
+                    dismissButton: .default(Text("Dismiss"))
+                )
+            }
         }
         .padding(.horizontal)
     }
@@ -85,8 +94,16 @@ struct EmailRegisterView: View {
     func register() {
         Auth.auth().createUser(withEmail: self.email, password: self.password, completion: {result, error in
             if let error = error {
+                
                 print(error)
+                
+                // Show error alert
+                self.primaryAlertMessage = "Unable to register"
+                self.secondaryAlertMessage = error.localizedDescription
+                self.showingAlert = true
+                
             } else {
+                
                 let userRepo = UserRepository()
                 let newUser = AppUser(id: UUID().uuidString, userID: result!.user.uid, username: self.username, email: self.email)
                 
@@ -96,8 +113,9 @@ struct EmailRegisterView: View {
                 self.email = ""
                 self.password = ""
 
-                print("\(self.email) has been registered with username \(self.username) in!")
+                print("\(self.email) has been registered with username \(self.username)!")
                 envObjects.authenticated = true
+                
             }
         })
     }

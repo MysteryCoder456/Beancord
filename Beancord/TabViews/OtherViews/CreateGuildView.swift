@@ -12,6 +12,10 @@ struct CreateGuildView: View {
     @ObservedObject var guildRepo: GuildRepository
     @State var guildName: String = ""
     
+    @State var showingAlert = false
+    @State var primaryAlertMessage = ""
+    @State var secondaryAlertMessage = ""
+    
     var body: some View {
         VStack(spacing: 20) {
             Spacer()
@@ -41,20 +45,36 @@ struct CreateGuildView: View {
                 Text("Create")
                     .font(.title)
             }
+            .alert(isPresented: $showingAlert) {
+                Alert(
+                    title: Text(primaryAlertMessage),
+                    message: Text(secondaryAlertMessage),
+                    dismissButton: .default(Text("Dismiss"))
+                )
+            }
         }
         .padding(.horizontal)
     }
     
     func createGuild() {
         self.guildName = self.guildName.trimmingCharacters(in: .whitespacesAndNewlines)
-        if (self.guildName == "") { return }
         
-        if let currentUser = Auth.auth().currentUser {
-            let newGuild = Guild(id: UUID().uuidString, name: self.guildName, ownerID: currentUser.uid)
-            guildRepo.createGuild(guild: newGuild)
-            
-            self.guildName = ""
-            print("Created new guild with name \(self.guildName)")
+        if self.guildName != "" {
+            if let currentUser = Auth.auth().currentUser {
+                
+                let newGuild = Guild(id: UUID().uuidString, name: self.guildName, ownerID: currentUser.uid)
+                guildRepo.createGuild(guild: newGuild)
+                
+                print("Created new guild with name \(self.guildName)")
+                
+                // Show guild creation alert
+                self.primaryAlertMessage = "\(self.guildName) has been created!"
+                self.secondaryAlertMessage = "Check it out in the Guilds tab. You may have to restart the app to view your new guild."
+                self.showingAlert = true
+                
+                self.guildName = ""
+                
+            }
         }
     }
 }

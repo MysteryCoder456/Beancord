@@ -71,7 +71,7 @@ struct GuildEditView: View {
         
         // Display alert
         self.primaryAlertMessage = "Saved!"
-        self.secondaryAlertMessage = "Guild settings have been saved."
+        self.secondaryAlertMessage = "Guild settings have been saved. You may have to restart the app for the changes to take effect."
         self.showingAlert = true
     }
     
