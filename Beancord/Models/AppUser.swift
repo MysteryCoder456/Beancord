@@ -16,3 +16,9 @@ struct AppUser: Identifiable, Codable {
     var email: String
     var dateJoined = Date()
 }
+
+let previewUsers = [
+    AppUser(id: UUID().uuidString, userID: "1", username: "User 1", email: "user1@mail.com"),
+    AppUser(id: UUID().uuidString, userID: "2", username: "User 2", email: "user2@mail.com"),
+    AppUser(id: UUID().uuidString, userID: "3", username: "User 3", email: "user3@mail.com"),
+]

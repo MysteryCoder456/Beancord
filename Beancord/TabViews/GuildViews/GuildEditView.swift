@@ -20,49 +20,68 @@ struct GuildEditView: View {
     @ObservedObject var userRepo: UserRepository
     
     var body: some View {
-        List {
-            
-            HStack {
-                
-                Text("Name:")
-                    .bold()
-                
-                TextField("Your guild's name", text: $guild.name)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-                
-            }
-            
-            HStack {
-                
-                TextField("Add Member (Email)", text: $newMemberEmail)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-                
-                Button(action: addMember) {
-                    Text("Add")
-                }
-                .alert(isPresented: $showingAlert) {
-                    Alert(
-                        title: Text(primaryAlertMessage),
-                        message: Text(secondaryAlertMessage),
-                        dismissButton: .default(Text("Dismiss"))
-                    )
+        VStack {
+        
+            List {
+                HStack {
+                    
+                    Text("Name:")
+                        .bold()
+                    
+                    TextField("Your guild's name", text: $guild.name)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    
                 }
                 
+                HStack {
+                    
+                    TextField("Add Member (Email)", text: $newMemberEmail)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                    
+                    Button(action: addMember) {
+                        Text("Add")
+                    }
+                    .alert(isPresented: $showingAlert) {
+                        Alert(
+                            title: Text(primaryAlertMessage),
+                            message: Text(secondaryAlertMessage),
+                            dismissButton: .default(Text("Dismiss"))
+                        )
+                    }
+                    
+                }
             }
+            .frame(height: 200)
             
+            Text("Members:")
+                .font(.title3)
+            
+            List(guild.members, id: \.self) { memberID in
+                
+                let users = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" ? previewUsers : userRepo.users
+                
+                if let member: AppUser = users.first(where: { $0.userID == memberID }) {
+                    HStack {
+
+                        Text(member.username)
+                        Spacer()
+                        Text(memberID == guild.ownerID ? "Owner" : "Member")
+                            .foregroundColor(.secondary)
+                        
+                    }
+                }
+                
+            }
+        
         }
         .navigationTitle("Editing Guild")
         .navigationBarItems(trailing:
             Button(action: saveDetails) {
-                HStack {
-                    Spacer()
-                    Text("Save")
-                        .foregroundColor(.blue)
-                    Spacer()
-                }
-            })
+                Text("Save")
+            }
+        )
     }
     
     func saveDetails() {
