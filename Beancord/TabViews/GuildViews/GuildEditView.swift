@@ -81,7 +81,7 @@ struct GuildEditView: View {
             // A user with the corresponding email address was found
             
             // Check if user is already a part of this guild
-            if newMember.userID == self.guild.ownerID || self.guild.members.contains(newMember.userID) {
+            if self.guild.members.contains(newMember.userID) {
                 
                 self.primaryAlertMessage = "Unable to add member"
                 self.secondaryAlertMessage = "\(newMember.username) is already a part of this guild"

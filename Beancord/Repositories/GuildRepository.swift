@@ -25,20 +25,18 @@ class GuildRepository: ObservableObject {
     func createGuild(guild: Guild) {
         do {
             let _ = try db.collection("guilds").addDocument(from: guild)
-        } catch {
-            print(error)
-        }
+        } catch { print(error) }
     }
 
     func readGuilds() {
         if let currentUserID = Auth.auth().currentUser?.uid {
-            db.collection("guilds").addSnapshotListener { querySnapshot, error in
+            db.collection("guilds").whereField("members", arrayContains: currentUserID).addSnapshotListener { querySnapshot, error in
                 if let querySnapshot = querySnapshot {
                     self.guilds = querySnapshot.documents.compactMap { document in
                         do {
                             
                             let x = try document.data(as: Guild.self)
-                            if x?.ownerID == currentUserID || x?.members.contains(currentUserID) == true { return x }
+                            return x
                             
                         } catch { print(error) }
 
