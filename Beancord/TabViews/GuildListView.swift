@@ -46,8 +46,20 @@ struct GuildListView: View {
             .navigationBarTitle("Beancord")
             .navigationBarItems(
                 
-                leading: Text("Logged in as \(currentUsername ?? "")")
-                    .foregroundColor(.secondary),
+                leading: HStack {
+                    
+                    Image("bean")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 32)
+                        
+                    Text("Logged in as \(currentUsername ?? "")")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                    
+                    Spacer()
+                
+                },
                 
                 trailing: Button(action: { self.editMode.toggle() }) {
                     Text(self.editMode ? "Done" : "Edit")
