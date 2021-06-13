@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3414373D2604E48200358B32 /* GuildEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414373C2604E48200358B32 /* GuildEditView.swift */; };
 		34AC23232603AFC400FCDBC1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC23222603AFC400FCDBC1 /* AboutView.swift */; };
+		34ACF2042675F15000351034 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ACF2032675F15000351034 /* ProfileView.swift */; };
 		34AF730726032C800056FE13 /* BeancordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF730626032C800056FE13 /* BeancordApp.swift */; };
 		34AF730B26032C860056FE13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34AF730A26032C860056FE13 /* Assets.xcassets */; };
 		34AF730E26032C860056FE13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34AF730D26032C860056FE13 /* Preview Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		3414373C2604E48200358B32 /* GuildEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildEditView.swift; sourceTree = "<group>"; };
 		34AC23222603AFC400FCDBC1 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		34ACF2032675F15000351034 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		34AF730326032C800056FE13 /* Beancord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beancord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34AF730626032C800056FE13 /* BeancordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeancordApp.swift; sourceTree = "<group>"; };
 		34AF730A26032C860056FE13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				34AF731F26032D2C0056FE13 /* CreateGuildView.swift */,
 				34AC23222603AFC400FCDBC1 /* AboutView.swift */,
+				34ACF2032675F15000351034 /* ProfileView.swift */,
 			);
 			path = OtherViews;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				34AF736826032DF30056FE13 /* EmailSignInView.swift in Sources */,
 				34AF736D26032DF30056FE13 /* GuildRepository.swift in Sources */,
 				34AF732726032D2C0056FE13 /* MessagesView.swift in Sources */,
+				34ACF2042675F15000351034 /* ProfileView.swift in Sources */,
 				34AF730726032C800056FE13 /* BeancordApp.swift in Sources */,
 				34AF732326032D2C0056FE13 /* AppView.swift in Sources */,
 				34AF737126032DF30056FE13 /* GuildRowView.swift in Sources */,

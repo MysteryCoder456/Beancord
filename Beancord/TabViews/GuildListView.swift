@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct GuildListView: View {
     @ObservedObject var guildRepo: GuildRepository
@@ -13,10 +14,21 @@ struct GuildListView: View {
     
     @State var editMode: Bool = false
     
+    let runningInPreviews = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+    var currentUsername: String?
+    
+    init(guildRepo: GuildRepository, userRepo: UserRepository) {
+        self.guildRepo = guildRepo
+        self.userRepo = userRepo
+        
+        let currentUserID = Auth.auth().currentUser?.uid
+        self.currentUsername = runningInPreviews ? "User 1" : userRepo.users.first(where: { $0.userID == currentUserID })?.username
+    }
+    
     var body: some View {
         NavigationView() {
-            let guilds = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" ? previewGuildList : guildRepo.guilds
-            let ownedGuilds = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" ? previewOwnedGuildList : guildRepo.ownedGuilds
+            let guilds = runningInPreviews ? previewGuildList : guildRepo.guilds
+            let ownedGuilds = runningInPreviews ? previewOwnedGuildList : guildRepo.ownedGuilds
             
             List(self.editMode ? ownedGuilds : guilds) { guild in
                 
@@ -32,10 +44,15 @@ struct GuildListView: View {
                 
             }
             .navigationBarTitle("Beancord")
-            .navigationBarItems(trailing:
-                Button(action: { self.editMode.toggle() }) {
+            .navigationBarItems(
+                
+                leading: Text("Logged in as \(currentUsername ?? "")")
+                    .foregroundColor(.secondary),
+                
+                trailing: Button(action: { self.editMode.toggle() }) {
                     Text(self.editMode ? "Done" : "Edit")
                 }
+                
             )
         }
     }
