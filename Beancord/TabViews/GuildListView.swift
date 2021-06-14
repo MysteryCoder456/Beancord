@@ -22,7 +22,7 @@ struct GuildListView: View {
         self.userRepo = userRepo
         
         let currentUserID = Auth.auth().currentUser?.uid
-        self.currentUsername = runningInPreviews ? "User 1" : userRepo.users.first(where: { $0.userID == currentUserID })?.username
+        self.currentUsername = runningInPreviews ? previewUser.username : userRepo.users.first(where: { $0.userID == currentUserID })?.username
     }
     
     var body: some View {
@@ -30,6 +30,7 @@ struct GuildListView: View {
             let guilds = runningInPreviews ? previewGuildList : guildRepo.guilds
             let ownedGuilds = runningInPreviews ? previewOwnedGuildList : guildRepo.ownedGuilds
             
+            // TODO: Add delete button that appears in edit mode
             List(self.editMode ? ownedGuilds : guilds) { guild in
                 
                 if self.editMode {

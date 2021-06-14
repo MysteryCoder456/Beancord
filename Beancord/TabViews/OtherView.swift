@@ -17,6 +17,10 @@ struct OtherView: View {
     var body: some View {
         NavigationView {
             List {
+                NavigationLink(destination: ProfileView(userRepo: userRepo)) {
+                    Text("My Profile")
+                }
+                
                 NavigationLink(destination: CreateGuildView(guildRepo: guildRepo)) {
                     Text("Create a chat guild")
                 }

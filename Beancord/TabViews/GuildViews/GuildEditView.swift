@@ -58,6 +58,7 @@ struct GuildEditView: View {
             Text("Members:")
                 .font(.title3)
             
+            // TODO: Change this to GroupBox View
             List(guild.members, id: \.self) { memberID in
                 
                 let users = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" ? previewUsers : userRepo.users

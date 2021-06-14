@@ -12,6 +12,7 @@ struct GuildRowView: View {
     
     var body: some View {
         HStack {
+            
             Image(systemName: "person.3.fill")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -26,6 +27,7 @@ struct GuildRowView: View {
                 .multilineTextAlignment(.center)
             
             Spacer()
+            
         }
         .padding()
     }
