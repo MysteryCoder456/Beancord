@@ -88,9 +88,9 @@
 		3468A38426033BB900B6FD6B /* OtherViews */ = {
 			isa = PBXGroup;
 			children = (
+				34ACF2032675F15000351034 /* ProfileView.swift */,
 				34AF731F26032D2C0056FE13 /* CreateGuildView.swift */,
 				34AC23222603AFC400FCDBC1 /* AboutView.swift */,
-				34ACF2032675F15000351034 /* ProfileView.swift */,
 			);
 			path = OtherViews;
 			sourceTree = "<group>";

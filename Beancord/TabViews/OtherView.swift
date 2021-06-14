@@ -14,10 +14,20 @@ struct OtherView: View {
     @ObservedObject var guildRepo: GuildRepository
     @ObservedObject var userRepo: UserRepository
     
+    let currentUser: AppUser?
+    
+    init(guildRepo: GuildRepository, userRepo: UserRepository) {
+        self.guildRepo = guildRepo
+        self.userRepo = userRepo
+        
+        let currentUserID = Auth.auth().currentUser?.uid
+        self.currentUser = userRepo.users.first(where: { $0.userID == currentUserID })
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: ProfileView(userRepo: userRepo)) {
+                NavigationLink(destination: ProfileView(userRepo: userRepo, user: currentUser ?? previewUser)) {
                     Text("My Profile")
                 }
                 

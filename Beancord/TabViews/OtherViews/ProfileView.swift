@@ -10,16 +10,7 @@ import FirebaseAuth
 
 struct ProfileView: View {
     @ObservedObject var userRepo: UserRepository
-    @State var currentUser = previewUser
-    
-    let runningInPreviews = ProcessInfo.processInfo.environment["XCODE_RUNNING_IN_PREVIEWS"] == "1"
-    
-    init(userRepo: UserRepository) {
-        self.userRepo = userRepo
-        
-        let currentUserID = Auth.auth().currentUser?.uid
-        self.currentUser = runningInPreviews ? previewUser : self.userRepo.users.first(where: { $0.userID == currentUserID }) ?? previewUser
-    }
+    @State var user: AppUser
     
     var body: some View {
         VStack {
@@ -32,7 +23,7 @@ struct ProfileView: View {
                 .clipShape(Circle())
                 .shadow(radius: 10)
             
-            Text(currentUser.username)
+            Text(user.username)
                 .font(.title2)
             
             // TODO: Add ability to update these details
@@ -42,7 +33,7 @@ struct ProfileView: View {
                     Text("Username:")
                         .bold()
                     
-                    TextField("Change your username", text: $currentUser.username)
+                    TextField("Change your username", text: $user.username)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                 }
@@ -53,7 +44,7 @@ struct ProfileView: View {
                     Text("Email:")
                         .bold()
                     
-                    TextField("Change your email", text: $currentUser.email)
+                    TextField("Change your email", text: $user.email)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                 }
@@ -71,7 +62,7 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(userRepo: UserRepository())
+        ProfileView(userRepo: UserRepository(), user: previewUser)
 
     }
 }
