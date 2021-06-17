@@ -30,7 +30,6 @@ struct ProfileView: View {
             Text(user.username)
                 .font(.title2)
             
-            // TODO: Add ability to update these details
             GroupBox {
                     
                 HStack {
@@ -88,6 +87,7 @@ struct ProfileView: View {
                     
                 } else {
                     
+                    // TODO: Add field value checks
                     self.userRepo.updateUser(user: self.user)
                     self.primaryAlertMessage = "Details updated succesfully"
                     self.secondaryAlertMessage = "Your accounts details were changed successfully."

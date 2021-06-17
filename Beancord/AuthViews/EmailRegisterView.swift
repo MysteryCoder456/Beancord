@@ -107,6 +107,7 @@ struct EmailRegisterView: View {
                 let userRepo = UserRepository()
                 let newUser = AppUser(id: UUID().uuidString, userID: result!.user.uid, username: self.username, email: self.email)
                 
+                // TODO: Add field value checks
                 userRepo.createUser(user: newUser)
                 
                 self.username = ""
