@@ -81,7 +81,7 @@ struct EmailSignInView: View {
                 Alert(
                     title: Text(primaryAlertMessage),
                     message: Text(secondaryAlertMessage),
-                    dismissButton: .default(Text("Dismiss"))
+                    dismissButton: .default(Text("OK"))
                 )
             }
             
