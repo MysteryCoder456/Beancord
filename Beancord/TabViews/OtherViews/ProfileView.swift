@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseStorage
 
 struct ProfileView: View {
     @ObservedObject var userRepo: UserRepository
@@ -16,16 +17,28 @@ struct ProfileView: View {
     @State var secondaryAlertMessage: String = ""
     @State var showingAlert: Bool = false
     
+    @State var showingImagePicker: Bool = false
+    @State var newProfileImage = UIImage()
+    
     var body: some View {
         VStack {
-            
-            // TODO: Replace "bean" with a proper picture after adding pfp uploading
-            Image("bean")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 90)
-                .clipShape(Circle())
-                .shadow(radius: 10)
+
+            Button(action: { showingImagePicker = true }) {
+                VStack {
+                    
+                    Image(uiImage: newProfileImage.size == CGSize.zero ? UIImage(named: "bean")! : newProfileImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100)
+                        .clipShape(Circle())
+                        .shadow(radius: 10)
+                    
+                    Text("Upload Image")
+                        .font(.footnote)
+                    
+                }
+            }
+            .padding(5)
             
             Text(user.username)
                 .font(.title2)
@@ -72,7 +85,21 @@ struct ProfileView: View {
             
         }
         .navigationTitle("My Profile")
+        .sheet(isPresented: $showingImagePicker, onDismiss: uploadProfileImage) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: $newProfileImage)
+        }
         
+    }
+    
+    func uploadProfileImage() {
+        // TODO: Implement image uploading
+        
+        // Make sure an image was selected from image picker
+        guard self.newProfileImage.size != CGSize.zero else { return }
+        
+        if let currentUserID = Auth.auth().currentUser?.uid {
+            let uploadRef = Storage.storage().reference(withPath: "profileImages/\(currentUserID).jpg")
+        }
     }
     
     func saveDetails() {
