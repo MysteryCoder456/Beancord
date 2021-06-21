@@ -24,7 +24,15 @@ struct ProfileView: View {
     @State var profileImage = UIImage(named: "bean")!
     @State var newProfileImage = UIImage()
     
-    // TODO: Retrieve profile image and set self.profileImage
+    let sizeLimitMegaBytes: Int64 = 5
+    
+    init(userRepo: UserRepository, user: AppUser) {
+        self.userRepo = userRepo
+        self._user = .init(initialValue: user)
+        
+        self._username = .init(initialValue: user.username)
+        self._email = .init(initialValue: user.email)
+    }
     
     var body: some View {
         VStack {
@@ -94,6 +102,22 @@ struct ProfileView: View {
         .sheet(isPresented: $showingImagePicker, onDismiss: uploadProfileImage) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: $newProfileImage)
         }
+        .onAppear(perform: {
+            // Retrieve user's profile image if they have one
+            let storageRef = Storage.storage().reference(withPath: "profileImages/\(user.userID).jpg")
+            storageRef.getData(maxSize: sizeLimitMegaBytes * 1048576 ) { data, error in
+                if let error = error {
+                    print("Error occurred while retrieving profile image: \(error.localizedDescription)")
+                    return
+                }
+                
+                if let data = data {
+                    if let image = UIImage(data: data) {
+                        profileImage = image
+                    }
+                }
+            }
+        })
         
     }
     
@@ -105,6 +129,16 @@ struct ProfileView: View {
             
             let uploadRef = Storage.storage().reference(withPath: "profileImages/\(currentUserID).jpg")
             guard let imageData = newProfileImage.jpegData(compressionQuality: 0.5) else { return }
+            
+            // Check if the selected image is less than the size limit
+            if imageData.count > sizeLimitMegaBytes * 1048576 {
+                
+                self.primaryAlertMessage = "Image is too large"
+                self.secondaryAlertMessage = "Image must be less than \(self.sizeLimitMegaBytes) MB"
+                self.showingAlert = true
+                return
+                
+            }
             
             let uploadMetadata = StorageMetadata()
             uploadMetadata.contentType = "image/jpeg"
@@ -121,9 +155,6 @@ struct ProfileView: View {
                     
                     print("Image uploaded successfully. Metadata: \(String(describing: downloadMetadata))")
                     self.profileImage = self.newProfileImage
-                    
-                    self.user.profileImageURL = uploadRef.fullPath
-                    self.userRepo.updateUser(user: self.user)
                     
                     // Set newProfileImage back to a blank UIImage object
                     self.newProfileImage = UIImage()
