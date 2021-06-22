@@ -52,10 +52,14 @@ struct GuildListView: View {
                 leading: HStack {
                     
                     // Show profile image
-                    if let currentUserID = Auth.auth().currentUser?.uid {
-                        ProfileImage(image: envObjects.profileImages[currentUserID] ?? UIImage(named: "bean")!, size: 35)
+                    let profileImageSize: CGFloat = 35
+                
+                    if runningInPreviews {
+                        ProfileImage(image: UIImage(named: "bean")!, size: profileImageSize)
+                    } else if let currentUserID = Auth.auth().currentUser?.uid {
+                        ProfileImage(image: envObjects.profileImages[currentUserID] ?? UIImage(named: "bean")!, size: profileImageSize)
                     } else {
-                        ProfileImage(image: UIImage(named: "bean")!, size: 32)
+                        ProfileImage(image: UIImage(named: "bean")!, size: profileImageSize)
                     }
                         
                     Text("Logged in as \(currentUsername ?? "")")
