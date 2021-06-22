@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3414373D2604E48200358B32 /* GuildEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414373C2604E48200358B32 /* GuildEditView.swift */; };
+		34676E3F268251D500E06B4E /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34676E3E268251D500E06B4E /* ProfileImage.swift */; };
 		34AC23232603AFC400FCDBC1 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC23222603AFC400FCDBC1 /* AboutView.swift */; };
 		34ACF2042675F15000351034 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ACF2032675F15000351034 /* ProfileView.swift */; };
 		34AF730726032C800056FE13 /* BeancordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AF730626032C800056FE13 /* BeancordApp.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		3414373C2604E48200358B32 /* GuildEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildEditView.swift; sourceTree = "<group>"; };
+		34676E3E268251D500E06B4E /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		34AC23222603AFC400FCDBC1 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		34ACF2032675F15000351034 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		34AF730326032C800056FE13 /* Beancord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beancord.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +150,7 @@
 			children = (
 				34AF735226032DF30056FE13 /* CustomScrollView.swift */,
 				34ED1BAC267FAE0B0017609E /* ImagePicker.swift */,
+				34676E3E268251D500E06B4E /* ProfileImage.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				34AF737126032DF30056FE13 /* GuildRowView.swift in Sources */,
 				34AF736526032DF30056FE13 /* CustomScrollView.swift in Sources */,
 				34AF737026032DF30056FE13 /* Message.swift in Sources */,
+				34676E3F268251D500E06B4E /* ProfileImage.swift in Sources */,
 				34AF736A26032DF30056FE13 /* OtherView.swift in Sources */,
 				34AF736C26032DF30056FE13 /* MessageRepository.swift in Sources */,
 			);

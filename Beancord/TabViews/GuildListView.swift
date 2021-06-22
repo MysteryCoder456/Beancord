@@ -9,6 +9,8 @@ import SwiftUI
 import FirebaseAuth
 
 struct GuildListView: View {
+    @EnvironmentObject var envObjects: EnvObjects
+    
     @ObservedObject var guildRepo: GuildRepository
     @ObservedObject var userRepo: UserRepository
     
@@ -49,10 +51,12 @@ struct GuildListView: View {
                 
                 leading: HStack {
                     
-                    Image("bean")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 32)
+                    // Show profile image
+                    if let currentUserID = Auth.auth().currentUser?.uid {
+                        ProfileImage(image: envObjects.profileImages[currentUserID] ?? UIImage(named: "bean")!, size: 35)
+                    } else {
+                        ProfileImage(image: UIImage(named: "bean")!, size: 32)
+                    }
                         
                     Text("Logged in as \(currentUsername ?? "")")
                         .font(.footnote)

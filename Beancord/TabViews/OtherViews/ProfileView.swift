@@ -10,6 +10,8 @@ import FirebaseAuth
 import FirebaseStorage
 
 struct ProfileView: View {
+    @EnvironmentObject var envObjects: EnvObjects
+    
     @ObservedObject var userRepo: UserRepository
     @State var user: AppUser
     
@@ -23,8 +25,6 @@ struct ProfileView: View {
     @State var showingImagePicker: Bool = false
     @State var profileImage = UIImage(named: "bean")!
     @State var newProfileImage = UIImage()
-    
-    let sizeLimitMegaBytes: Int64 = 5
     
     init(userRepo: UserRepository, user: AppUser) {
         self.userRepo = userRepo
@@ -40,11 +40,7 @@ struct ProfileView: View {
             Button(action: { showingImagePicker = true }) {
                 VStack {
                     
-                    Image(uiImage: profileImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 120, height: 120)
-                        .clipShape(Circle())
+                    ProfileImage(image: profileImage, size: 120)
                         .shadow(radius: 10)
                     
                     Text("Upload Image")
@@ -52,7 +48,7 @@ struct ProfileView: View {
                     
                 }
             }
-            .padding(5)
+            .padding(10)
             
             Text(user.username)
                 .font(.title2)
@@ -105,6 +101,8 @@ struct ProfileView: View {
         .onAppear(perform: {
             // Retrieve user's profile image if they have one
             let storageRef = Storage.storage().reference(withPath: "profileImages/\(user.userID).jpg")
+            let sizeLimitMegaBytes = self.envObjects.profileImageSizeLimitMegaBytes
+            
             storageRef.getData(maxSize: sizeLimitMegaBytes * 1048576 ) { data, error in
                 if let error = error {
                     print("Error occurred while retrieving profile image: \(error.localizedDescription)")
@@ -129,12 +127,13 @@ struct ProfileView: View {
             
             let uploadRef = Storage.storage().reference(withPath: "profileImages/\(currentUserID).jpg")
             guard let imageData = newProfileImage.jpegData(compressionQuality: 0.5) else { return }
+            let sizeLimitMegaBytes = self.envObjects.profileImageSizeLimitMegaBytes
             
             // Check if the selected image is less than the size limit
             if imageData.count > sizeLimitMegaBytes * 1048576 {
                 
                 self.primaryAlertMessage = "Image is too large"
-                self.secondaryAlertMessage = "Image must be less than \(self.sizeLimitMegaBytes) MB"
+                self.secondaryAlertMessage = "Image must be less than \(sizeLimitMegaBytes) MB"
                 self.showingAlert = true
                 return
                 
@@ -158,6 +157,11 @@ struct ProfileView: View {
                     
                     // Set newProfileImage back to a blank UIImage object
                     self.newProfileImage = UIImage()
+                    
+                    // Show alert
+                    self.primaryAlertMessage = "Image uploaded successfully"
+                    self.secondaryAlertMessage = "It may take some time for the change to propagate everywhere."
+                    self.showingAlert = true
                     
                 }
             }
