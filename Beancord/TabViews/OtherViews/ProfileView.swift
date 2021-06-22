@@ -99,6 +99,12 @@ struct ProfileView: View {
             ImagePicker(sourceType: .photoLibrary, selectedImage: $newProfileImage)
         }
         .onAppear(perform: {
+            
+            // Show locally cached profile image while waiting for actual image to load
+            if let currentProfileImage = envObjects.profileImages[user.userID] {
+                profileImage = currentProfileImage
+            }
+                
             // Retrieve user's profile image if they have one
             let storageRef = Storage.storage().reference(withPath: "profileImages/\(user.userID).jpg")
             let sizeLimitMegaBytes = self.envObjects.profileImageSizeLimitMegaBytes
@@ -154,6 +160,9 @@ struct ProfileView: View {
                     
                     print("Image uploaded successfully. Metadata: \(String(describing: downloadMetadata))")
                     self.profileImage = self.newProfileImage
+                    
+                    // Update environment object
+                    envObjects.profileImages[currentUserID] = newProfileImage
                     
                     // Set newProfileImage back to a blank UIImage object
                     self.newProfileImage = UIImage()
