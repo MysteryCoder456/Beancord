@@ -42,8 +42,8 @@ struct ProfileView: View {
                     
                     Image(uiImage: profileImage)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 120, height: 120)
                         .clipShape(Circle())
                         .shadow(radius: 10)
                     
